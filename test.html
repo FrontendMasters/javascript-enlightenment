@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+
+    <div id="output"></div>
+    <!-- Load ES2015+ Polyfill, core-js used by Babel polyfill -->
+    <script src="https://unpkg.com/core-js-bundle@3.0.0-beta.3/minified.js"></script>
+    <!-- Load Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Your custom script here -->
+    <script type="text/babel">
+
+    // Arrow function form ES2015
+    const getMessage = () => "Hello World";
+    document.getElementById('output').innerHTML = getMessage();
+
+    // .flat() from staged 3 propsoal works because of polyfill
+    console.log([1, [2, 3], [4, 5]].flat())
+    </script>
+
+</body>
+
+</html>
