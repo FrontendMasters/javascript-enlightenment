@@ -997,12 +997,15 @@ var myFunction = function myFunction() {};
                     example
                     of using babel-standalone in a web browser via a .html document.</p>
 
+
+                    <div class="codesandboxlinkNotDynamic"><a href="https://codesandbox.io/s/182474qr23">run/edit in
+                        codesandbox.io</a></div>
+
                 <pre class="line-numbers"><code class="language-markup">
-&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;utf-8&quot; /&gt;&#10;&lt;/head&gt;&#10;&#10;&lt;body&gt;&#10;&#10;    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;&#10;    &lt;!-- Load ES2015+ Polyfill, core-js used by Babel polyfill --&gt;&#10;    &lt;script src=&quot;https://unpkg.com/core-js-bundle@3.0.0-beta.3/minified.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!-- Load Babel --&gt;&#10;    &lt;script src=&quot;https://unpkg.com/@babel/standalone/babel.min.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!-- Your custom script here --&gt;&#10;    &lt;script type=&quot;text/babel&quot;&gt;&#10;&#10;    // Arrow function from ES2015&#10;    const getMessage = () =&gt; &quot;Hello World&quot;;&#10;    document.getElementById(&apos;output&apos;).innerHTML = getMessage();&#10;&#10;    // .flat() from staged 3 proposal works because of polyfill&#10;    console.log([1, [2, 3], [4, 5]].flat())&#10;    &lt;/script&gt;&#10;&#10;&lt;/body&gt;&#10;&#10;&lt;/html&gt;
+&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;utf-8&quot; /&gt;&#10;&lt;/head&gt;&#10;&#10;&lt;body&gt;&#10;&#10;    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;&#10;    &lt;!-- Load ES2015+ Polyfill, core-js used by Babel polyfill --&gt;&#10;    &lt;script src=&quot;https://unpkg.com/core-js-bundle@3.0.0-beta.3/minified.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!-- Load Babel --&gt;&#10;    &lt;script src=&quot;https://unpkg.com/@babel/standalone/babel.min.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!-- Your custom script here --&gt;&#10;    &lt;script type=&quot;text/babel&quot;&gt;&#10;&#10;    // Arrow function from ES2015&#10;    const getMessage = () =&gt; &quot;Hello World&quot;;&#10;    document.getElementById(&apos;output&apos;).innerHTML = getMessage();&#10;&#10;    // .flat() from staged 3 proposal works because of polyfill&#10;    console.log([1, [2, 3], [4, 5]].flat());&#10;    &lt;/script&gt;&#10;&#10;&lt;/body&gt;&#10;&#10;&lt;/html&gt;
 
 </pre></code>
-
-<p></p>                
+               
 <p>Using Babel dynamically at runtime is generally not recommended for production but it does have a
                     few
                     use cases:
