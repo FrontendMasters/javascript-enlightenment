@@ -175,9 +175,9 @@ console.log(Array.isArray({length: 3, 0:1, 1:2, 2:3})) //logs false
                     <li><code>[].reduceRight()</code></li>
                 </ul>
 
-                <p>The <code>[].some()</code> method will test every value in array,
-                    <strong>if one or more tests return true</strong> then the function passed to <code>.some()</code> returns <code>true</code>, otherwise the function returns
-                    <code>false</code>.</p>
+                <p>The <code>[].some()</code> method will start testing values in array,
+                    <strong>until a test returns true</strong>, then the function passed to <code>.some()</code> immediately returns <code>true</code>, otherwise the function returns
+                    <code>false</code> (i.e. the first truthy value found will result in the function immediately returning true and potentially this could mean not all tests are run).</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // Check if one or more items in the array is bigger than or equal to 2
@@ -189,8 +189,8 @@ console.log(someMethod)
 // logs true because the array contains a value that is greater than or equal to 2
     </code></pre>
 
-                <p>The <code>[].every()</code> method will test every value in array,
-                    <strong>if every test returns true</strong> then the function passed to .every() returns <code>true</code>, otherwise the function returns <code>false</code>.</p>
+                <p>The <code>[].every()</code> method will start testing values in array,
+                    <strong>until a test returns true</strong>, then the function passed to <code>.every()</code> immediately returns <code>true</code>, otherwise the function returns <code>false</code> (i.e. the first truthy value found will result in the function immediately returning true and potentially this could mean not all tests are run).</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // Check if every item in the array is bigger than or equal to 2
@@ -244,7 +244,7 @@ console.log(['dog','cat','mouse', 'cat'].indexOf('cat')); // logs 1
     </code></pre>
 
                 <p>The <code>[].lastIndexOf()</code> method searches an array for the
-                    <strong>last</strong> value, passed, and returns the index of this value.</p>
+                    <strong>last</strong> value matching the value passed to <code>[].lastIndexOf()</code>, and returns the index of this value.</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // get index of last 'cat'
@@ -337,9 +337,9 @@ console.log(reduceRightMethod) // logs 27
                     methods
                     (i.e you don't invoke them using <code>()</code>). In short by labeling a function in an object
                     with
-                    <code>get</code> or <code>set</code> one can invoke the backing function on a property by simply
+                    <code>get</code> or <code>set</code> one can invoke the backing property function on a property, by merely
                     accessing
-                    the property without using innovating brackets.</p>
+                    the property, without using innovating brackets.</p>
 
                 <p>The example below demonstrates the nature of getter and setter properties:</p>
 
@@ -353,10 +353,10 @@ var obj = {
     }
 }
 
-// access the RunsWhenAccessed property and the backing function fires
+// access the RunsWhenAccessed property and the backing property function fires
 obj.RunsWhenAccessed; // logs 'you accessed the property RunsWhenAccessed'
 
-// access and set the RunsWhenSet property and the backing function fires
+// access and set the RunsWhenSet property and the backing property function fires
 obj.RunsWhenSet = 'foo'; // logs 'you set the property RunsWhenSet to : foo'
 // note I am setting a value that becomes an argument and not calling a function using brackets
 
@@ -364,7 +364,7 @@ obj.RunsWhenSet = 'foo'; // logs 'you set the property RunsWhenSet to : foo'
 
                 <p>Don't over think getters and setters, they are simply a property who's value is determined by
                     running
-                    a backing function and the function is invoked by accessing or setting the property.</p>
+                    a backing property function and the function is invoked by accessing or setting the property.</p>
 
 <pre class="line-numbers"><code class="language-js">
 var person = {
@@ -400,9 +400,8 @@ console.log(person.name); // logs 'Cody Lindley'
                             <code>Object.defineProperties()</code> to add the <code>get</code> and <code>set</code> property descriptors.</li>
                         <li>A setter property can only take in a single value and thus a single argument is
                             passed
-                            to the backing function.
+                            to the backing property function.
                         </li>
-                        <li>Careful, getters and setters can sometimes be very hard to debug and hard to test.</li>
                     </ol>
                 </div>
 
@@ -426,7 +425,7 @@ console.log(person.name); // logs 'Cody Lindley'
                 <p>ES5 added the <code>Object.create()</code> method so objects could be created and their prototypes
                     easily
                     setup.
-                    <code>Object.getPrototypeOf</code>() was added to then easily get an objects prototype.</p>
+                    <code>Object.getPrototypeOf</code>() was added to easily get an objects prototype.</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // setup an object to be used as the prototype to a newly created myObject object below
@@ -437,11 +436,11 @@ var aPrototype = {
     }
 }
 
-//create a new myObject, setting the prototype of this new object to aPrototype
+// create a new myObject, setting the prototype of this new object to aPrototype
 var myObject = Object.create(aPrototype);
 
-//logs 'bar' because myObject uses aPrototype as its prototype, it inherits getFoo()
-myObject.getFoo();
+// logs 'bar' because myObject uses aPrototype as its prototype, it inherits getFoo()
+myObject.getFoo(); // logs 'bar'
 
 // get a reference to the prototype of myObject, using getPrototypeOf()
 console.log(Object.getPrototypeOf(myObject) === aPrototype); //logs true
@@ -494,14 +493,19 @@ Object.defineProperties(myObject, {
     prop3: {
     enumerable: true,
     configurable: true,
-    value: "value3"
+    value: 'value3'
     },
     prop4: {
     enumerable: true,
     configurable: true,
     // Note that value and write properties are not added when using the properties set and get
-    set: (newvalue) => {console.log('you set the property value4 to : ' + newValue)},
-    get: () => {console.log('you accessed the property value4');}
+    set: (newValue) => {
+      console.log('you set the property prop4 to : ' + newValue);
+      },
+    get: () => {
+      console.log('you accessed the property prop4');
+      return 'prop4'; // the get returns the value for prop4 unlike using, value: 'value4'
+      }
     }
 });
 
@@ -510,6 +514,10 @@ Object.defineProperties(myObject, {
 console.log(Object.getOwnPropertyDescriptor(myObject,'prop3'));
 
 console.log(Object.getOwnPropertyDescriptor(myObject,'prop4'));
+
+
+// Note that prop4's value is based on get and set, not value
+console.log(myObject.prop4);
 
     </code></pre>
 
@@ -527,7 +535,7 @@ console.log(Object.getOwnPropertyDescriptor(myObject,'prop4'));
                             allow the assignment of a value as well as the defining/retrieval of a properties
                             descriptors
                             and will ignore the prototype chain (i.e. will not look for inherited properties).</li>
-                        <li>ES2017 added the <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors">Object.getOwnPropertyDescriptors()</a></code> static method. This method returns an object containing all the own property descriptors for an given object.</li>
+                        <li>ES2017 added the <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors">Object.getOwnPropertyDescriptors()</a></code> static method. This method returns an object containing all the own property descriptors for a given object.</li>
                         <li>Below are the descriptions/definitions of the attributes of a property that make up a
                             property
                             descriptor:
@@ -536,7 +544,7 @@ console.log(Object.getOwnPropertyDescriptor(myObject,'prop4'));
                             <dl>
                                 <dt>
                                     <strong>value</strong> :</dt>
-                                <dd>contains the property’s value.</dd>
+                                <dd>contains the property's value.</dd>
                                 <dt>
                                     <strong>writable</strong> :</dt>
                                 <dd>contains a boolean indicating whether the value of a property can be changed or
@@ -622,14 +630,14 @@ console.log(Object.getOwnPropertyNames(myObject)); // logs ["myObjectProp1", "my
                         <code>writable</code> descriptor attribute for each property is changed to <code>false</code>)</li>
                 </ol>
 
-                <p>To compliment these three methods ES5 also added three Object methods for determining the type of
+                <p>To compliment these three methods ES5 also added three <code>Object</code> methods for determining the type of
                     protection
                     an object is using. They are:</p>
 
                 <ol>
-                    <li><code>Object.isExtensible()</code>: Boolean check if an object is Extensible.</li>
+                    <li><code>Object.isExtensible()</code>: Boolean check if an object is extensible.</li>
                     <li><code>Object.isSealed()</code>: Boolean checking if an object is sealed.</li>
-                    <li><code>Object.isFrozen()</code>: Boolean checking if an object is Frozen.</li>
+                    <li><code>Object.isFrozen()</code>: Boolean checking if an object is frozen.</li>
                 </ol>
 
                 <h3>1.7 : New ES5 <code>bind()</code> Function Method</h3>
@@ -640,7 +648,7 @@ console.log(Object.getOwnPropertyNames(myObject)); // logs ["myObjectProp1", "my
                     call
                     a function and at call time change the value of <code>this</code> for the body of the function. But
                     what
-                    if you don't want to invoked the function? And instead, you want to change the value of <code>this</code>
+                    if you don't want to invoke the function? And instead, you want to change the value of <code>this</code>
                     for
                     the function when it is called in the future?</p>
 
@@ -652,20 +660,21 @@ console.log(Object.getOwnPropertyNames(myObject)); // logs ["myObjectProp1", "my
 
 
                 <pre class="line-numbers"><code class="language-js">
-var name = 'John'; // Defined in the global scope
+window.name = 'John'; // Defined in the global scope
 
 var myObject = {name:'Bill'};
 
 var greeting = function(){
-    console.log(this.name); // this value defaults to where it is called
+    // if the greeting function has a defined this that is not window i.e. global scope
+    console.log(this !== undefined && this !== window ?  this.name : window.name);
 };
+
+// invoke greeting, where the this context for the greeting function is the global scope
+greeting(); //logs John because the value name is in the global scope
 
 // .bind() greetings function this value to myObject
 var bindGreetingToObject = greeting.bind(myObject);
 // this keyword now points to myObject, and not the window object.
-
-// invoke greeting, where the this context for the greeting function is the global scope
-greeting(); //logs John because the value name is in the global scope
 
 // invoke bindGreetingToObject with the this context being bound to myObject
 bindGreetingToObject(); //logs Bill because this value for bindGreetingToObject is bound to myObject
@@ -702,7 +711,7 @@ bindGreetingToObject(); //logs Bill because this value for bindGreetingToObject 
                     <a href="https://github.com/facebook/create-react-app ">create-react-app</a> which uses ECMAScript modules
                     will
                     have <code>'use strict'</code> in play by default due to the fact that ECMAScript modules (i.e. <code>import React from 'react';</code>)
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import ">use
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import ">uses
                         strict
                         mode implicitly</a>. It is important you are aware of this fact. In other words, JavaScript
                     modules
@@ -719,8 +728,8 @@ bindGreetingToObject(); //logs Bill because this value for bindGreetingToObject 
                     Numbers, Booleans etc..).</p>
 
                 <pre class="line-numbers"><code class="language-js">
-var JSONValues = JSON.parse('{"name ":"Bill","age ":22}') // convert JSON string to JS values
-console.log(typeof JSONValues); // logs "object "
+var JSONValues = JSON.parse('{"name":"Bill","age":22}') // convert JSON string to JS values
+console.log(typeof JSONValues); // logs "object"
 console.log(JSONValues.name, JSONValues.age); // logs Bill, 22
     </code></pre>
 
@@ -728,7 +737,7 @@ console.log(JSONValues.name, JSONValues.age); // logs Bill, 22
 
                 <pre class="line-numbers"><code class="language-js">
 var JSONString = JSON.stringify({ name: 'Bill', age: 2 }); // Convert JS Object to JSON String 
-console.log(typeof JSONString) // logs "string "
+console.log(typeof JSONString) // logs "string"
 console.log(JSONString) // logs "{ "name": "Bill", "age":2} "
     </code></pre>
 
@@ -762,7 +771,7 @@ var myObject = {
                     </p>
                     <ol>
                         <li>Be aware, trailing commas are not allowed in JSON</li>
-                        <li>ES 2017 will allow trailing commas when defining function parameters or calling a function with
+                        <li>ES2017 will allow trailing commas when defining function parameters or calling a function with
                             arguments.
                             However, calling a function with a comma alone or defining a function parameter as a comma
                             alone
@@ -771,7 +780,7 @@ var myObject = {
                     </ol>
                 </div>
 
-                <p>Reserve words can now be used as unquoted <code>Object</code> property keys:</p>
+                <p>Reserved words can now be used as unquoted <code>Object</code> property keys:</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // no syntax error when using reserved keywords as property/keys on an object
@@ -787,14 +796,14 @@ var myObject = {
 
                 <p>ES2015 was first called ES6 because at the time an update to the 5th edition of ECMAScript would
                     logically
-                    be title ECMAScript edition 6 or "ES6". However a naming tweak for language updates/changes
+                    be title ECMAScript edition 6 or "ES6". However, a naming tweak for language updates/changes
                     occurred
                     in 2015. It was decided by <a href="https://www.ecma-international.org/memento/tc39-rf-tg.htm">TC39</a>,
-                    the standarization group for JavaScript/ECMA-262, to release stage <a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md">four
+                    the standardization group for JavaScript/ECMA-262, to release stage <a href="https://github.com/tc39/proposals/blob/master/finished-proposals.md">four
                         proposals
                     </a> once a year (i.e. stage four are approved changes to the language). Given this change, new updates to the language moving forward would be given the
                     titles
-                    ES2015 (i.e. ES6), ES2016, ES2017, ES2018 etc...). Basically, language changes/updates are semantically
+                    ES2015 (i.e. ES6), ES2016, ES2017, ES2018 etc... . Basically, language changes/updates are semantically
                     titled
                     under the year in which the update/change becomes standardized.
                 </p>
@@ -805,13 +814,13 @@ var myObject = {
                         <strong>Notes:</strong>
                     </p>
                     <ol>
-                        <li>If it is not obvious it should be noted that just because a JavaScript language
+                        <li>If it is not obvious, it should be noted that just because a JavaScript language
                             update/change has been
                             standardized
                             does not mean those who make use of the ECMAScript standard will implement the
                             updates/change.
-                            (i.e.
-                            adoption of new standards is a slow and often complicated affair e.g. browser
+                            (i.e.,
+                            adoption of new standards is a slow and often complicated affair e.g., browser
                             compatibility)</li>
                     </ol>
                 </div>
@@ -826,8 +835,7 @@ var myObject = {
                     <p>Writing and running ES2015+ (i.e. ES2015, ES2016, ES2017, ES2018) code and staged proposals is
                         not as simple as writing some code and
                         then
-                        having a web browser or Node run it. To run ES2015+ and staged proposals a pre-compiler
-                        (ES2015+ > ES5) and
+                        having a web browser or Node run it. To run ES2015+ and staged proposals a pre-compiler and
                         polyfills
                         are needed. This chapter digs into some of these details.</p>
                 </section>
@@ -2943,7 +2951,7 @@ class Human {
     }
     // class name can be used to reference the class inside the class object
     classMethod (){
-        console.log(Human); // logs out class object backing function
+        console.log(Human); // logs out class object backing property function
     }
 }
 
@@ -2963,7 +2971,7 @@ const Human = class optionalClassNameForReferenceInClassMethods {
     }
     // the optional name can be used to reference the class inside the class object
     classMethod (){
-        console.log(optionalClassNameForReferenceInClassMethods); // logs out class object backing function
+        console.log(optionalClassNameForReferenceInClassMethods); // logs out class object backing property function
     }
 }
 
