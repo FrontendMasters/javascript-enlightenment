@@ -36,7 +36,7 @@ Try and view the code examples as an extension of the words. First, read and re-
 
 **Read Online**:
 
-- The words and code comments are intentionally terse with the goal of code comprehension overlong explanations.
+- The words and code comments are intentionally terse with the goal of code comprehension long-winded and exhaustive explanations.
 - The code examples are contrived to reveal the nature of the code. Focus on what the code is doing and making sure you understand it, potentially over my words.
 - The book is a mix of a mini book, a reference, and cheatsheet. Expect it to feel like one of these or all of these at the same time.
 
