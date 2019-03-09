@@ -854,13 +854,13 @@ var myObject = {
 
                 <p>In short, both modern day Node and modern web browser engines mostly have full <a href="http://kangax.github.io/compat-table/es6/">support
                         for ES2015</a> (starting with Node 6.14.4+, Edge 15, Chrome 47, Safari 10, and Firefox 54).
-                    However
+                    However,
                     things get complicated in terms of compatibility for <a href="https://kangax.github.io/compat-table/es2016plus/">ES2016+</a>
                     and <a href="https://github.com/tc39/proposals">staged proposals</a>. This is why a lot of
                     developers
-                    side-step chasing compatibility and turn to a polyfills and compliers. Polyfills plug JavaScript
+                    side-step chasing compatibility and turn to polyfills and compilers. Polyfills plug JavaScript
                     runtimes
-                    environments, at runtime, with newer unsupported API's while a complier will transform newer
+                    environments, at runtime, with newer unsupported API's while a compiler will transform newer
                     unsupported
                     syntax to previous versions of JavaScript (i.e. ES2015+ > ES5). This combination of polyfills and
                     compiling
@@ -875,18 +875,18 @@ var myObject = {
                                 <strong>Notes:</strong>
                             </p>
                             <ol>
-                                <li>The staging of JavaScript proposals/updates is the process that allows JavaScript to change over time. A proposed change to the language starts at stage 0 and is finished when it reaches stage 4 (stages: <a href="https://tc39.github.io/process-document/">0 = strawman, 1 = proposal, 2 = draft, 3 = Canidate, 4 = finished</a>). When a proposal is finished it simply means it is ready to be add to the formal specification. Today, staged proposals regardless of if they have been officially added to the JavaScript specification can be adopted prematurely by developers using polyfills and compilers (e.g. Both TypeScript and Babel can be configured to interpret staged proposals).</li>
+                                <li>The staging of JavaScript proposals/updates is the process that allows JavaScript to change over time. A proposed change to the language starts at stage 0 and is finished when it reaches stage 4 (stages: <a href="https://tc39.github.io/process-document/">0 = strawman, 1 = proposal, 2 = draft, 3 = Candidate, 4 = finished</a>). When a proposal is finished it simply means it is ready to be added to the formal specification. Today, staged proposals regardless of if they have been officially added to the JavaScript specification can be adopted prematurely by developers using polyfills and compilers (e.g. Both TypeScript and Babel can be configured to interpret staged proposals).</li>
                             </ol>
                         </div>
 
                 <h3>2.2 : Running ES2015+ Using Online Tools</h3>
 
                 <p>The simplest way to run ES2015+ code online (including staged proposals) is to use the <a href="https://babeljs.io/repl">online
-                        Babel REPL</a>. But this will only run JavaScript (i.e. compiling ES2015+ > ES5).</p>
+                        Babel REPL</a>.</p>
 
                 <p>If you'd like to run ES2015+ code in the context of the web platform try the <a href="https://codesandbox.io/s/vanilla">codesandbox.io</a>
                     tool.
-                    The vanilla sandbox, uses <a href="https://parceljs.org/transforms.html#babel">Parcel</a>
+                    The vanilla sandbox uses <a href="https://parceljs.org/transforms.html#babel">Parcel</a>
                     which uses Babel and <a href="https://babeljs.io/docs/en/babel-preset-env">babel-preset-env</a>
                     by default. Most of the code examples in this book can be run in <a href="https://codesandbox.io/s/vanilla">codesandbox.io</a> by clicking on the "run/edit in codesandbox.io" link above the code.</p>
 
@@ -904,11 +904,10 @@ var myObject = {
                         6.14.4+</a>.
                     But if you want ES2015+ including staged proposals you'll need to use a tool like <a href="https://babeljs.io/docs/en/next/babel-node.html">babel-node</a>.</p>
 
-                <p>Personally I prefer using <a href="https://quokkajs.com/">Quokka.js</a> in my code editor with <a
+                <p>Personally, I prefer using <a href="https://quokkajs.com/">Quokka.js</a> in my code editor with <a
                         href="https://quokkajs.com/docs/configuration.html#babel">Babel
                         enabled</a>. I setup Quokka to use <a href="https://babeljs.io/docs/en/babel-preset-env">babel-preset-env</a>
-                    and <a href="https://babeljs.io/docs/en/babel-preset-stage-1">stage 1-3
-                    </a>.</p>
+                    and <a href="https://babeljs.io/docs/en/babel-preset-stage-1">stage 1-3</a>.</p>
 
                 <div class="notes ">
 
@@ -918,7 +917,7 @@ var myObject = {
                     <ol>
                         <li>Writing source code that uses ES2015+ in a coding environment isn't the topic of this book.
                             However,
-                            keep in mind, that most developers today working on the front-end will setup a compiler
+                            keep in mind, that most developers today working on the front-end will set up a compiler
                             like
                             Babel or TypeScript as part of a development environment process so ES2015+ code will be
                             compiled
@@ -952,15 +951,15 @@ var myFunction = function myFunction() {};
 
 </code></pre>
 
-                <p>The most common compliers in use today are
+                <p>The most common compilers in use today are
                     <a href="https://babeljs.io/">Babel</a> and
                     <a href="https://www.typescriptlang.org/">TypeScript</a>. These compilers are routinely used as
                     part
-                    of a build/bundling module process where ES2015+ source code and ES modules syntax is taken in and
+                    of a build/bundling module process where ES2015+ source code and ES modules syntax are taken in and
                     transformed
                     to <strong>static</strong> ES5 production code (e.g.
                     <a href="https://webpack.js.org/loaders/babel-loader/">Webpack</a> and
-                    <a href="https://parceljs.org/transforms.html#babel">Parcel</a> exist to bundle assets, but it can
+                    <a href="https://parceljs.org/transforms.html#babel">Parcel</a> exist to bundle assets, but they can
                     also
                     compile ES2015+ code found in JavaScript modules to ES5 when bundling).</p>
 
@@ -979,11 +978,11 @@ var myFunction = function myFunction() {};
                         <li>Compiling does not come without <a href="https://babeljs.io/docs/en/caveats#classes">caveats</a>.</li>
                         <li>Babel and TypeScript differ in the fact that Babel is not trying to be a superset of
                             JavaScript.
-                            In other words, Babel does not exist so non-standard language features can be bolt on to
+                            In other words, Babel does not exist so non-standard language features can be bolted on to
                             the
                             language.
-                            TypeScript however views non-standard language updates as a core part of its purpose for
-                            existing (e.g. static type
+                            However, TypeScript views non-standard language updates as a core part of its purpose for
+                            existing (e.g. built in static type
                             checking).</li>
                     </ol>
                 </div>
@@ -994,12 +993,12 @@ var myFunction = function myFunction() {};
                     or <a href="https://parceljs.org/transforms.html#babel">Parcel</a> during module bundling to create
                     static
                     files that are then used in production. However, Babel can also be used dynamically at runtime via
-                    <a href="https://babeljs.io/docs/en/next/babel-standalone.html">babel-standalone</a>. Below is an
+                    <a href="https://babeljs.io/docs/en/next/babel-standalone.html">babel-standalone</a>. Below is a
                     example
-                    of using babel-standalone in a web browser via an .html document.</p>
+                    of using babel-standalone in a web browser via a .html document.</p>
 
                 <pre class="line-numbers"><code class="language-markup">
-&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;utf-8&quot; /&gt;&#10;&lt;/head&gt;&#10;&#10;&lt;body&gt;&#10;&#10;    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;&#10;    &lt;!-- Load ES2015+ Polyfill, core-js used by Babel polyfill --&gt;&#10;    &lt;script src=&quot;https://unpkg.com/core-js-bundle@3.0.0-beta.3/minified.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!-- Load Babel --&gt;&#10;    &lt;script src=&quot;https://unpkg.com/@babel/standalone/babel.min.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!-- Your custom script here --&gt;&#10;    &lt;script type=&quot;text/babel&quot;&gt;&#10;&#10;    // Arrow function from ES2015&#10;    const getMessage = () =&gt; &quot;Hello World&quot;;&#10;    document.getElementById(&apos;output&apos;).innerHTML = getMessage();&#10;&#10;    // .flat() from staged 3 propsoal works because of polyfill&#10;    console.log([1, [2, 3], [4, 5]].flat())&#10;    &lt;/script&gt;&#10;&#10;&lt;/body&gt;&#10;&#10;&lt;/html&gt;
+&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;utf-8&quot; /&gt;&#10;&lt;/head&gt;&#10;&#10;&lt;body&gt;&#10;&#10;    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;&#10;    &lt;!-- Load ES2015+ Polyfill, core-js used by Babel polyfill --&gt;&#10;    &lt;script src=&quot;https://unpkg.com/core-js-bundle@3.0.0-beta.3/minified.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!-- Load Babel --&gt;&#10;    &lt;script src=&quot;https://unpkg.com/@babel/standalone/babel.min.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!-- Your custom script here --&gt;&#10;    &lt;script type=&quot;text/babel&quot;&gt;&#10;&#10;    // Arrow function from ES2015&#10;    const getMessage = () =&gt; &quot;Hello World&quot;;&#10;    document.getElementById(&apos;output&apos;).innerHTML = getMessage();&#10;&#10;    // .flat() from staged 3 proposal works because of polyfill&#10;    console.log([1, [2, 3], [4, 5]].flat())&#10;    &lt;/script&gt;&#10;&#10;&lt;/body&gt;&#10;&#10;&lt;/html&gt;
 
 </pre></code>
 
@@ -1029,9 +1028,9 @@ var myFunction = function myFunction() {};
 
                 <h3>2.6 : Polyfill'ing JavaScript API's at Runtime</h3>
 
-                <p>Polyfills are javascript code used to plug or fill runtime environments with newer non-syntax parts of the
+                <p>Polyfills are JavaScript code used to plug or fill runtime environments with newer non-syntax parts of the
                     JavaScript
-                    language that it may be lacking. Here is an example of an <code>Object.assign()</code> polyfill.
+                    language that it may be lacking. Below is an example of an <code>Object.assign()</code> polyfill that will check to see if the JavaScript runtime has <code>Object.assign()</code> and if not will add it to the runtime.</p>
 
 <pre class="line-numbers"><code class="language-js">
 // if Object.assign is missing then polyfill it.
@@ -1068,7 +1067,7 @@ if (typeof Object.assign != 'function') {
 </code></pre>                  
                     
                     
-                    <p>Basically, JavaScript polyfills fill in newer missing API features. The
+                    <p>Basically, JavaScript polyfills fill in newer missing API features if they are missing from the runtime. The
                     <a href="https://babeljs.io/docs/en/babel-polyfill">babel-polyfill</a>
                     documentation offers the following explanation for polyfill'ing:</p>
 
@@ -1084,7 +1083,7 @@ if (typeof Object.assign != 'function') {
                             with
                             compiling tools like Babel</a> to offer full compatibility for both syntax and newer API
                         features
-                        (i.e. syntax meaning something like: <code>() => {}</code> and API meaning something like:
+                        (i.e. syntax meaning something like: <code>() => {}</code> and API meaning something like
                         <code>Object.assign()</code>).
                         This is why Babel provides the <a href="https://babeljs.io/docs/en/babel-polyfill">babel-polyfill</a>.</p>
 
