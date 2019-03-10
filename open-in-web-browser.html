@@ -1117,14 +1117,14 @@ if (typeof Object.assign != 'function') {
 
                 <section class="sub">
 
-                        <p>In this chapter I'll break down the newest methods used from ES2015 and beyond. When targeting an ES5 only runtime all of these methods have to be <a href="https://github.com/zloirock/core-js">polyfilled</a>.</p>
+                        <p>In this chapter, I'll break down the newest methods from ES2015+. When targeting an ES5 only runtime (i.e. IE9) all of these methods have to be <a href="https://github.com/zloirock/core-js">polyfilled</a>.</p>
             </section>
 
                 <h3>3.1 : New <code>Number</code> Static Method (ES2015)</h3>
 
                 <p>ES2015 added the <code>Number.isInteger()</code> method that will return <code>true</code> if the
                     value
-                    passed to it is an integer (i.e. a number with no fractional part). Otherwise, is will return <code>false</code>.</p>
+                    passed to it is an integer (i.e. a number with no fractional part). Otherwise, it will return <code>false</code>.</p>
 
                 <pre class="line-numbers"><code class="language-js">
 console.log(Number.isInteger(0)); // logs true
@@ -1145,7 +1145,7 @@ console.log(Number.isInteger([1])); // logs false
                     <li><code>''.padStart()</code> ES2017</li>
                     <li><code>''.padEnd()</code> ES2017</li>
                     <li><code>''.matchAll()</code> (coming soon, stage 3 proposal)</li>
-                    <li><code>''.trimStart()</code> / <code>''.trimStart()</code> (coming soon, stage 3 proposal)</li>
+                    <li><code>''.trimStart()</code> / <code>''.trimLeft()</code> (coming soon, stage 3 proposal)</li>
                     <li><code>''.trimEnd()</code> / <code>''.trimRight()</code> (coming soon, stage 3 proposal)</li>
                 </ul>
 
@@ -1171,7 +1171,7 @@ console.log('pre-funded'.includes('fund')) // logs true
 
                 <p>ES2015 added <code>''.repeat()</code>. This method will take a string and return the same string
                     repeated
-                    as many times as you would like.</p>
+                    as many times as provided in the first argument.</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // Take the string 'He' and return a string containing 'He' repeated three times
@@ -1196,7 +1196,7 @@ console.log('GO!'.padStart(10, '.')) // logs '.......GO!'
 // note how the '.' repeated until a length of 10 was reached
 
 // Pad the end of 'GO!' with spaces so the total length of the string is 10, including 'GO!'.
-console.log('GO!'.padEnd(10)) // logs 'GO!         '
+console.log('GO!'.padEnd(10)) // logs 'GO!       '
 // note how the ' ' repeated until a length of 10 was reached
 
 // Pad the start of 'GO!' with '.' so the total length of the string is 10, including 'GO!'.
@@ -1271,7 +1271,7 @@ console.log(myArray4); // logs [1, 4, 9]
                     <code>Array(5)</code> will result in <code>[undefined, undefined, undefined, undefined, undefined]</code>.</p>
 
                 <pre class="line-numbers"><code class="language-js">
-// create an array containing 5 random values                   
+// create an array containing 5 values                   
 console.log(Array.of(5,{},undefined,[],'string'));
 /* logs:
 
@@ -1312,7 +1312,7 @@ console.log(Array(5,4));
                     </ul>
 
                 <p>ES2015/ES2016 added the <code>[].findIndex()</code>, <code>[].find()</code> and <code>[].includes()</code>
-                    method.
+                    methods.
                     The <code>[].find()</code> method is used to find a specific value in an array and return that
                     value.
                     <code>[].findIndex()</code> is used to find a specific value and return its index in the array.
@@ -1389,12 +1389,12 @@ console.log(myArrayEntries.next().value) // logs [2, "item2"]
                         <li>
                             Don't confuse an iterator with an iterable. An iterator will keep track of what comes next
                             (i.e. <code>.next()</code>)
-                            while a iterable values is simply a value that comes with an interface for iterating over
+                            while a iterable value is simply a value that comes with an interface for iterating over
                             the
                             value. An array is by default an iterable. But, methods like <code>[].keys()</code>,
                             <code>[].values()</code>,
                             and <code>[].entries()</code> can be used to create an Array iterator object around the
-                            orginial
+                            original
                             array that will keep track of the current iteration and knows what the next item in the
                             iteration
                             is and how to get it.
@@ -1439,13 +1439,13 @@ console.log(myArray3.copyWithin(0, 4)); //logs [5, 5, 5, 5, 5, 5, 5, 5]
                     </ol>
                 </div>
 
-                <p>ES2015 added the <code>[].fill()</code> method. This method will replaced or fill a range of items
+                <p>ES2015 added the <code>[].fill()</code> method. This method will replace or fill a range of items
                     in
                     an Array with a new value.</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // replace the values at index 0 and index 1 with 'foo'
-// the second and third argument to fill() below say, start filling at index 0 stop and index 2
+// the second and third arguments to fill() below say, start filling at index 0 and stop at index 2
 console.log([5,5,5,5].fill('foo',0,2)) // logs ["foo", "foo", 5, 5]
 
 // replace all values from index 2 on with 'foo'
@@ -1479,15 +1479,15 @@ console.log(Array(4).fill('foo')) // logs ["foo", "foo", "foo", "foo"]
 
                 <p>ES2015 added the <code>Object.is()</code> static method. This method is passed two values and if the
                     values
-                    are the same, by reference not value, then it returns true, otherwise it returns false.</p>
+                    are the same then it returns true, otherwise, it returns false.</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // compare the same Object object
 const myObject = {};
-console.log(Object.is(myObject,myObject)); // logs true, same object (by reference)
+console.log(Object.is(myObject,myObject)); // logs true, same
 
 // compare different Object objects
-console.log(Object.is({},{})); // logs false, two different objects (by reference)
+console.log(Object.is({},{})); // logs false, two different objects 
 
 // compare primitive values
 const myNumber = 5;
@@ -1495,11 +1495,11 @@ const myBoolean = true;
 const myString = '';
 const myNull = null;
 const myUndefined = undefined;
-console.log(Object.is(5,myNumber)); // logs true, same value (by value)
-console.log(Object.is(true,myBoolean)); // logs true, same value (by value)
-console.log(Object.is('',myString)); // logs true, same value (by value)
-console.log(Object.is(null,myNull)); // logs true, same value (by value)
-console.log(Object.is(undefined,myUndefined)); // logs true, same value (by value)
+console.log(Object.is(5,myNumber)); // logs true, same value
+console.log(Object.is(true,myBoolean)); // logs true, same value
+console.log(Object.is('',myString)); // logs true, same value
+console.log(Object.is(null,myNull)); // logs true, same value 
+console.log(Object.is(undefined,myUndefined)); // logs true, same value
                 </code></pre>
 
                 <div class="notes ">
@@ -1508,25 +1508,15 @@ console.log(Object.is(undefined,myUndefined)); // logs true, same value (by valu
                         <strong>Notes:</strong>
                     </p>
                     <ol>
-                        <li>Don't forget primitives/simple values (<code>Boolean</code>, <code>Null</code>, <code>Undefined</code>,
-                            <code>Number</code>,
-                            <code>String</code>, <code>Symbol</code>) are stored by value, while complex objects are
-                            stored
-                            by reference. What is considered the "same " or "equal " is different for primitives than
-                            it
-                            is for complex objects (i.e. anything that is not a <code>Boolean</code>, <code>Null</code>,
-                            <code>Undefined</code>,
-                            <code>Number</code>,
-                            <code>String</code>, <code>Symbol</code>) </li>
                         <li><code>Object.is(1,1)</code> is the same as <code>1 === 1</code>, except for the following
                             cases, <code>Object.is( +0, -0 ) is false, while -0 === +0</code> is true and <code>Object.is( NaN, NaN ) is true, while NaN === NaN </code>
                             is false.</li>
                     </ol>
                 </div>
 
-                <p>ES2017 added the <code>Object.values()</code> static method. This method will return an Array of
+                <p>ES2017 added the <code>Object.values()</code> static method. This method will return an <code>Array</code> of
                     enumerable
-                    property values from an Object.</p>
+                    property values from an <code>Object</code>.</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // log the values in myObject
@@ -1560,7 +1550,7 @@ console.log(Object.entries(myObject)); // logs [["0", "f"], ["1", "o"], ["2", "o
                     </ol>
                 </div>
 
-                <p>ES2015 added the <code>Object.assign()</code> static method. This method copies enumerable own
+                <p>ES2015 added the <code>Object.assign()</code> static method. This method copies own enumerable
                     properties
                     from one object to a different target object. </p>
 
@@ -1615,7 +1605,7 @@ console.log(Object.assign({},'foo'));
                             <strong>Notes:</strong>
                         </p>
                         <ol>
-                            <li>The <code>Object.assign()</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Deep_Clone">won't deep clone reference values</a>, it will only deep clone the reference not the value. This means that if you are cloning an object with reference values (e.g. objects inside of objects) the reference value is not cloned just the reference. Thus, deep cloning using <code>Object.assign()</code> copies pointers (i.e. the reference), not values. If you need to deep clone an object you'll have to resort to other <a href="https://github.com/pvorb/clone">methods</a>.
+                            <li>The <code>Object.assign()</code> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Deep_Clone">won't deep clone reference values</a>; it will only deep clone the reference, not the value. This means that if you are cloning an object with reference values (e.g. objects inside of objects) the reference value is not cloned just the reference. Thus, deep cloning using <code>Object.assign()</code> copies pointers (i.e. the reference), not values. If you need to deep clone an object, you'll have to resort to other <a href="https://github.com/pvorb/clone">methods</a>.
                             </li>
                             <li>The <code>Object.assign()</code> is commonly used to merge objects together or create shallow clones of objects.</li>
                         </ol>
