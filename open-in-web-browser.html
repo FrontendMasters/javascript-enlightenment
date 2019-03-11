@@ -1477,7 +1477,7 @@ console.log(Array(4).fill('foo')) // logs ["foo", "foo", "foo", "foo"]
                     <li><code>Object.fromEntries()</code> (coming soon, stage 3 proposal)</li>
                 </ul>
 
-                <p>ES2015 added the <code>Object.is()</code> static method. This method is passed two values and if the
+                <p>ES2015 added the <code>Object.is()</code> static method. This method accepts two values and if the
                     values
                     are the same then it returns true, otherwise, it returns false.</p>
 
@@ -1529,10 +1529,10 @@ console.log(Object.values('foo')); // logs ['f', 'o', 'o']
 
                 <p>ES2017 added the <code>Object.entries()</code> static method. This method will return an objects
                     properties,
-                    as key-value pairs inside an Array (e.g. <code>[property: value]</code>) inside a single wrapping
+                    as key-value pairs inside an Array (e.g. <code>[property, value]</code>) inside a single wrapping
                     Array
                     (e.g. a multidimensional array
-                    <code>[[property: value], [property: value]]</code>).</p>
+                    <code>[[property, value], [property, value]]</code>).</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // log the key and value pairs in myObject
@@ -1562,7 +1562,7 @@ console.log(Object.assign({}, myObject));
 
 [object Object] {
     key1: "value1",
-    key2: "value2 "
+    key2: "value2"
 }
 
 */
@@ -1578,7 +1578,7 @@ console.log(Object.assign(myObject1, myObject2, myObject3));
     key1: "value1",
     key2: "value2",
     key3: "value3",
-    key4: "4 "
+    key4: "4"
 }
 
 Note: same properties are overwritten. Last in to the parameter list wins. 
@@ -1593,7 +1593,7 @@ console.log(Object.assign({},'foo'));
 [object Object] {
     0: "f",
     1: "o",
-    2: "o "
+    2: "o"
 }
 
 */
@@ -1624,7 +1624,7 @@ console.log(Object.assign({},'foo'));
 
                 <section class="sub">
 
-                        <p>In this chapter I'll break down the most used syntax updates from ES2015 and beyond. When targeting an ES5 only runtime these syntax updates have to be compiled from ES2015+ to ES5 (e.g. Babel > ES5).</p>
+                        <p>In this chapter, I'll break down the most used syntax updates from ES2015 and beyond. When targeting an ES5 only runtime these syntax updates have to be compiled from ES2015+ to ES5 (e.g., Babel > ES5).</p>
             </section>
 
                 <h3>4.1 : Using <code>const</code> and <code>let</code> (ES2015)</h3>
@@ -1637,30 +1637,34 @@ console.log(Object.assign({},'foo'));
                     <code>const</code> value throws an error. Additionally, both <code>const</code> and <code>let</code>
                     honor
                     all block scope (i.e.
-                    <code>{ block scope }</code>), unlike like
+                    <code>{ block scope }</code>), unlike
                     <code>var</code> which only honors <strong>function</strong> block scope (i.e. <code>function myFunction(){ block scoped }</code>).</p>
 
                 <p>This means <code>const</code> and <code>let</code> are safer because they don't leak out of things
                     like
-                    <code>if</code> blocks or looping blocks. For example in the code below the variables <code>doug</code>
+                    <code>if</code> blocks or looping blocks. For example, in the code below the variables, <code>doug</code>
                     and
                     <code>MATH</code> are scoped to the <code>if</code> block while <code>jill</code> leaks out.
                 </p>
 
                 <pre class="line-numbers"><code class="language-js">
-// MATH and doug are scoped within the if(){ ... } blocks and unlike var they will not leak out.
+// MATH_CONSTANT and doug are scoped within the if(){ ... } blocks and unlike var they will not leak out.
 if(true){
     let doug = 45;
-    const MATH = Math.PI; //
+    const MATH_CONSTANT = Math.PI;
     var jill = 44; // does not care about brackets
-
-    // Note: code below would throw an error, const variables can't be reassigned new values
-    // MATH = 'foo';
 }
 
-console.log(jill); // logs 44
-console.log(math); // ReferenceError: math is not defined
-console.log(doug); // ReferenceError: doug is not defined
+console.log(jill); // logs 44, because it leaked out of { }
+
+//
+
+try {
+    console.log(doug);
+    console.log(MATH_CONSTANT);
+}catch(e){
+    console.log('Can\'t find doug or MATH_CONSTANT');
+}
     </code></pre>
 
                 <div class="notes ">
@@ -1677,25 +1681,32 @@ console.log(doug); // ReferenceError: doug is not defined
                             the values in an <code>Array</code> that has been assigned to a <code>const</code> will not
                             throw an error
                             because
-                            it is not being reassigned (i.e. the reference/pointer to the value did not changed thus no error).</li>
+                            it is not being reassigned (i.e. the reference/pointer to the value did not change thus no error).</li>
                     </ol>
                 </div>
 
                 <p>Today expect to see code that never uses <code>var</code>, favors <code>const</code>, and uses <code>let</code>
                     only when
-                    re-assignment is needed (i.e. <code>let score = 0; score = 1;</code>).
+                    re-assignment is needed (i.e. <code>let score = 0; score = 1;</code> v.s. <code>const pie = 3.14;</code>).
                 </p>
 
                 <h3>4.2 : Using blocks to Create Scope (ES2015)</h3>
 
-                <p>Before ES2015 if one needed a unique scope the only option was to use Function scope:</p>
+                <p>Before ES2015 if one needed a unique scope the only option was to use function scope:</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // below doug and MATH_CONSTANT are only available with the scope of the function
 (function () {
     var doug = 45;
     var MATH_CONSTANT = Math.PI
-}());   
+}());
+
+try {
+    console.log(doug);
+    console.log(MATH_CONSTANT);
+}catch(e){
+    console.log('Can\'t find doug or MATH_CONSTANT');
+}
     </code></pre>
 
                 <p>Today, given that <code>const</code> and
@@ -1713,6 +1724,13 @@ console.log(doug); // ReferenceError: doug is not defined
     let doug = 45;
     const MATH_CONSTANT = Math.PI;
 }
+
+try {
+    console.log(doug);
+    console.log(MATH_CONSTANT);
+}catch(e){
+    console.log('Can\'t find doug or MATH_CONSTANT');
+}
     </code></pre>
 
                 <div class="notes ">
@@ -1723,7 +1741,7 @@ console.log(doug); // ReferenceError: doug is not defined
                     <ol>
                         <li>Keep in mind that the need to construct a private scope is being accomplished today with
                             ES2015
-                            modules. Modules have their own module scope by default. In other words, in modern code, ECMAScript modules are already scoped privately simply be creating the file. One does not need to create another private scope on top of that. </li>
+                            modules. Modules have their own module scope by default. In other words, in modern code, ECMAScript modules are already scoped privately simply by creating the file. One does not need to create another private scope on top of that. </li>
                     </ol>
                 </div>
 
@@ -1742,8 +1760,7 @@ const add = function(x, y) {
 console.log(add()) //logs 0
     </code></pre>
 
-                <p>No longer is this case when defining a function. It is now possible to give parameters default
-                    values.
+                <p>No longer is this the case. It is now possible to give parameters default values when defining a function.
                     The code below is equivalent to the previous code.</p>
 
                 <pre class="line-numbers"><code class="language-js">
@@ -1784,27 +1801,27 @@ console.log(add()) //logs 0
 
                 <pre class="line-numbers"><code class="language-js">
 // destructuring Strings characters into the variables a, b, and c
-const [a, b, c] = "foo";
-console.log(a); // f
-console.log(b); // o
-console.log(c); // o
+let [a, b, c] = "foo";
+console.log(a); // logs f
+console.log(b); // logs o
+console.log(c); // logs o
 
 /* Could be written
-const a;
-const b;
-const c;
+let a;
+let b;
+let c;
 [a, b, c] = "foo"; // i.e. a = 'f', b='o', c='o'
-console.log(a); // f
-console.log(b); // o
-console.log(c); // o
+console.log(a); // logs f
+console.log(b); // logs o
+console.log(c); // logs o
 */
     </code></pre>
 
                 <p>2. Destructing Arrays:</p>
 
                 <pre class="line-numbers"><code class="language-js">
-// destructering an Array of elements in the variables one, two, and three
-const [one, two, three] = [1,2,3];
+// destructuring an Array of elements in the variables one, two, and three
+let [one, two, three] = [1,2,3];
 console.log(one); // 1
 console.log(two); // 2
 console.log(three); // 3
@@ -1815,13 +1832,13 @@ console.log(three); // 3
                 <pre class="line-numbers"><code class="language-js">
 // destructuring an Object properties in the variables f and l
 // i.e. find the property first, assign its value to f. Find property last, assign its value to l.
-const { first: f, last: l } = { first: 'Bill', last: 'May' };
+let { first: f, last: l } = { first: 'Bill', last: 'May' };
 console.log(f); // Bill
 console.log(l); // May
 // The object is used to identify the property and new variable that will hold the properties value
 
 // Note the above code is commonly written using shorthand properties names
-const { first, last } = { first: 'Bill', last: 'May' };
+let { first, last } = { first: 'Bill', last: 'May' };
 console.log(first); // Bill
 console.log(last); // May
 // This means you omit the : f and : l, and the assignment uses first:first and last:last
@@ -1829,7 +1846,7 @@ console.log(last); // May
 
 /* the above is just shorthand for:
 
-const { first:first, last:last } = { first: 'Bill', last: 'May' };
+let { first:first, last:last } = { first: 'Bill', last: 'May' };
 
 */
     </code></pre>
@@ -1852,44 +1869,44 @@ const { first:first, last:last } = { first: 'Bill', last: 'May' };
 
                 <p>Take what you know about destructuring and now apply it to function arguments and parameters.
                     Basically,
-                    a function parameter can be written as a collection of identifers that can destructure String,
+                    a function parameter can be written as a collection of identifiers that can destructure String,
                     Array,
                     and Object values. The result is an extremely terse way to unpack Arrays, Objects, or Strings into
                     separate
                     parameters using a single argument.
                 </p>
 
-                <p>Array arguments can be destructued:</p>
+                <p>Array arguments can be destructured:</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // assign argument values to identifiers in the first parameter
-const func = function([one, two, three]) {
+let func = function([one, two, three]) {
     console.log(one, two, three); 
 }
 func([1,2,3]);
-// Same concept as: const [one, two, three] = [1,2,3]; but using arguments & parameters instead
+// Same concept as: let [one, two, three] = [1,2,3]; but using arguments & parameters instead
     </code></pre>
 
                 <p>Object arguments can be destructured (Most Common Usage):</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // assign argument values to identifiers in the first parameter
-const func = function({ first: f, last: l }) {
+let func = function({ first: f, last: l }) {
     console.log(f,l); 
 }
 func({ first: 'Bill', last: 'May' });
-// Same concept as: const { first: f, last: l } = { first: 'Bill', last: 'May' };
+// Same concept as: let { first: f, last: l } = { first: 'Bill', last: 'May' };
     </code></pre>
 
                 <p>String arguments can be destructured:</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // assign argument values to identifiers in the first parameter
-const func = function([a, b, c]) {
+let func = function([a, b, c]) {
     console.log(a,b,c); 
 }
 func('foo');
-// Same concept as: const [a, b, c] = "foo";
+// Same concept as: let [a, b, c] = "foo";
     </code></pre>
 
                 <p>Destructuring function parameters are a terse way to pass complex data via a single argument and
@@ -1919,20 +1936,20 @@ func('foo');
                 <pre class="line-numbers"><code class="language-js">
 // Note: Fallback to default value when destructing Strings
 const [a='f', b='o', c='o'] = '';
-console.log(a); // f
-console.log(b); // o
-console.log(c); // o
+console.log(a); // log f
+console.log(b); // log o
+console.log(c); // log o
 
 // Note: Fallback to default value when destructing Arrays
 const [one=1, two=2, three=3] = [undefined,44,undefined];
-console.log(one); // 1
-console.log(two); // 44
-console.log(three); // 3
+console.log(one); // log 1
+console.log(two); // log 44
+console.log(three); // log 3
 
 // Note: Fallback to default value when destructing Objects
 const { first: f = 'John', last: l = 'Doe' } = { first: 'Mary' };
-console.log(f); // Mary
-console.log(l); // Doe
+console.log(f); // log Mary
+console.log(l); // log Doe
     </code></pre>
 
     <p>This will of course also work with when destructuring function arguments</p>
@@ -1969,8 +1986,8 @@ func3('');
 
                 <pre class="line-numbers"><code class="language-js">
 // spreading an Array into a function call
-console.log(...['f', 'o', 'o']); // like calling console.log('f', 'o', 'o'); 
-// logs f o o 
+console.log(...['f', 'o', 'o']); // logs f o o,  like calling console.log('f', 'o', 'o'); 
+
 
 // spreading Array(s) into an Array literal
 console.log([...[1, 2], ...[3, 4, 5]]); // logs [1,2,3,4,5]
@@ -2039,7 +2056,7 @@ console.log(...'foo');
 
                 <h3>4.8 : Using the Rest Operator (ES2015, ES2018)</h3>
 
-                <p>Unfortunately the rest operator (i.e. <code>...</code>) looks exactly like the spread operator but instead of expanding
+                <p>Unfortunately, the rest operator (i.e. <code>...</code>) looks exactly like the spread operator but instead of expanding
                     things
                     it will wrap things up.
                 </p>
@@ -2066,29 +2083,29 @@ func(1,2,3,4,5,6,7); // logs 1 2 [3, 4, 5, 6, 7]
                 <p>2. When destructing, remaining values can be wrapped up too:</p>
 
                 <pre class="line-numbers"><code class="language-js">
-// destructering String characters in the variables a, b, c, and the rest into d Array
+// destructuring String characters in the variables a, b, c, and the rest into d Array
 const [a, b, c, ...d] = "doggy";
-console.log(a); // f
+console.log(a); // d
 console.log(b); // o
 console.log(c); // o
 console.log(d); // ["g", "y"]
 // Note: use of Array of variables before assignment
 
-// destructering an Array elements in the variables one, two, three, and the rest in restOfNumbers of Array
+// // logs f o o  an Array elements in the variables one, two, three, and the rest in restOfNumbers of Array
 const [one, two, three, ...restOfNumbers] = [1, 2, 3, 4, 5, 6];
 console.log(one); // 1
 console.log(two); // 2
 console.log(three); // 3
 console.log(restOfNumbers); // [4, 5, 6]
 
-// destructering an Object properties in the variables f, l, and the rest in restOfProps Object 
+// // logs f o o  an Object properties in the variables f, l, and the rest in restOfProps Object 
 const { first: f, last: l, ...restOfProps } = { first: 'Bill', last: 'May', age: 45, living: false };
 console.log(f); // Bill
 console.log(l); // May
 console.log(restOfProps); // { age: 45, living: false }
     </code></pre>
 
-                <p>Careful not to confused the spread operator with the rest operator. The
+                <p>Careful not to confuse the spread operator with the rest operator. The
                     <code>...</code> operator is identical but the context in which it is used changes how the operator
                     functions.
                     The rest operator is used when defining function parameters and destructuring. The spread operator
@@ -2100,7 +2117,7 @@ console.log(restOfProps); // { age: 45, living: false }
 
                 <h3>4.9 : Using Template Literals (ES2015, ES2016, ES2018)</h3>
 
-                <p> Characters wrapped in backtickes (i.e. <code>`string here`</code>) instead of quotes are consider
+                <p> Characters wrapped in backticks (i.e. <code>`string here`</code>) instead of quotes are considered
                     template
                     string literals that return a String value. Template literals support line breaks and interpolation
                     (i.e.
@@ -2158,30 +2175,28 @@ May I call you Jane?"
                 <pre class="line-numbers"><code class="language-js">
 // This is a contrived example highlighting the mechanics of a tag function
 
-let firstNameUndefined = undefined;
-let lastNameUndefined = undefined;
+let name;
 
-let firstName = 'Pat';
-let lastName = 'Smith';
-
-// tag function to adjust string if first name or last name is undefined
-const verifyName = function(stringsFromTemplate, lastNameTemplateData, firstNameTemplateData) {
+// tag function to adjust string if name is undefined
+const verifyName = function(stringsFromTemplate, nameTemplateData) {
     const s = stringsFromTemplate; // In an array
 
-    if(lastNameTemplateData === undefined || firstNameTemplateData === undefined){
-        return `${s[0]}${'[no first name given]'}${s[1]}${'[no last name given]'}${s[2]}`
+    if(nameTemplateData === undefined){
+        return `${s[0]}${'[no name given]'}${s[1]}${'[no name given]'}${s[2]}`
     }else{
-        return `${s[0]}${firstNameTemplateData}${s[1]}${lastNameTemplateData}${s[2]}`
+        return `${s[0]}${nameTemplateData}${s[1]}${nameTemplateData}${s[2]}`
     }
 }
 
-// Use verifyName tagged function with undefined values
-let greeting1 = verifyName`Hello ${lastNameUndefined}! May I call you ${firstNameUndefined}?`
-console.log(greeting1); //logs Hello [no last name given]! May I call you [no first name given]?
+// Use verifyName tagged function with undefined value
+let greeting1 = verifyName`Hello ${name}! May I call you ${name}?`
+console.log(greeting1); //logs Hello [no name given]! May I call you [no name given]?
 
-// Use verifyName tagged function with defined values
-let greeting2 = verifyName`Hello ${lastName}! May I call you ${firstName}?`
-console.log(greeting2); //logs Hello Smith! May I call you Billy?
+name = 'Pat';
+
+// Use verifyName tagged function with defined value
+let greeting2 = verifyName`Hello ${name}! May I call you ${name}?`
+console.log(greeting2); //logs Hello Pat! May I call you Pat?
     </code></pre>
 
                 <div class="notes ">
@@ -2201,7 +2216,7 @@ console.log(greeting2); //logs Hello Smith! May I call you Billy?
 
                 <h3>4.11 : Using Fat Arrow Function Expressions (ES2015)</h3>
 
-                <p>Today, developers have replace traditional function expressions like:</p>
+                <p>Today, developers have replaced traditional function expressions like:</p>
 
                 <pre class="line-numbers"><code class="language-js">
 const func = function (x) { return x * x; };
@@ -2228,27 +2243,29 @@ const func = (x, y) =&gt; {
                     function
                     is not a total replacement for functions in general. Fat arrow function expressions are best suited
                     for
-                    non-method functions, and they cannot be used as constructor functions. In most cases fat arrow
+                    non-method functions, and they cannot be used as constructor functions. In most cases, fat arrow
                     function
-                    expressions are used due to their terseness. But, fat arrow functions can also provide another
+                    expressions are used due to their terseness.</p>
+                    
+                    <p>Fat arrow functions can also provide another
                     benefit
                     besides terseness. They will take on the value of <code>this</code> in the context they are used
                     instead
                     of binding a new <code>this</code> value (i.e. fat error functions provide a lexical
-                    <code>this</code>, meaning the <code>this</code> value is determined based on surrounding scope at run time). </p>
+                    <code>this</code>, meaning the <code>this</code> value is determined based on surrounding scope at runtime). </p>
 
                 <p>Have you ever had to hack a reference to <code>this</code> in the function scope chain using a <code>that</code>
                     variable:</p>
 
                 <pre class="line-numbers"><code class="language-js">
-// Broken because using the, this keyword creates a new binding in function(){}
+// Broken because using this keyword creates a new binding in function(){}
 
 var CounterBroken = function () {
     this.num = 0;
     this.timer = setTimeout(function () {
         // console.log(this); //this, refers to window
         this.num++; // this, does not refer to CounterBroken instance
-        console.log(`Broken this = ${this.num}`); //logs NaN
+        console.log(`Broken this = ${this.num}`); //logs Broken this = NaN
     }, 1000);
 }
 
@@ -2262,7 +2279,7 @@ var CounterFixed = function () {
     this.timer = setTimeout(function() {
         console.log(that.num); //that = this, from scope above
         that.num++; // this will now work, but a scope chain hack
-        console.log(`Fixed this = ${that.num}`); //logs 1
+        console.log(`Fixed this = ${that.num}`); //logs Fixed this = 1
     }, 1000);
 }
 
@@ -2411,7 +2428,7 @@ for (const entry of myMap){
     console.log(entry);
     // logs:
     // ["key1", "value1"]
-    // ["key2", "value3"]
+    // ["key2", "value2"]
 }
     </code></pre>
 
