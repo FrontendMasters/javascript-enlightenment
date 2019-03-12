@@ -2417,7 +2417,7 @@ for (const character of aString) {
                 <p>Looping over Maps using for-of loop:</p>
 
                 <pre class="line-numbers"><code class="language-js">
-// create a new Map called myMap and preload it with key value entries
+// create a new Map called myMap and preload it with key-value entries
 const myMap = new Map([
     ['key1', 'value1'], 
     ['key2', 'value2']
@@ -2506,7 +2506,7 @@ const myObjectLiteral = {
 };
     </code></pre>
 
-                <p>This is the new short hand syntax.</p>
+                <p>This is the new shorthand syntax.</p>
 
                 <pre class="line-numbers"><code class="language-js">
 const myObjectLiteral = {
@@ -2589,11 +2589,10 @@ console.log(myObject);
 
                 <h3>5.1 : Using Maps instead of Object Literals (ES2015)</h3>
 
-                <p>ES2015 comes with <code>Map()</code>. Maps are key value pairs stored in insertion order. Sounds a
+                <p>ES2015 comes with <code>Map()</code>. Maps are key-value pairs stored in insertion order. Sounds a
                     lot like an
-                    Object
-                    object right (i.e. <code>{key1:value1, key2:value2}</code>? Think of Maps as objects but with a built-in
-                    native API for working with the object and its key value pairs. </p>
+                    object right (i.e. <code>{key1:value1, key2:value2}</code>)? Think of Maps as objects but with a built-in
+                    native API for working with the object and its key-value pairs. </p>
 
                 <p>Examine the code below to gain a basic overview of the creation and usage of a <code>Map</code>. Note that most
                     of
@@ -2605,7 +2604,7 @@ console.log(myObject);
 
                 <pre class="line-numbers"><code class="language-js">
 // create a new Map called myMap
-// Preload myMap with key value entries, as an Array, contained in an Array
+// Preload myMap with key-value entries, as an Array, contained in an Array
 const myMap = new Map([
     ['key1', 'value1'], 
     ['key2', 'value2']
@@ -2613,39 +2612,41 @@ const myMap = new Map([
 
 // .forEach()
 // loop over each entry in the Map using Map's forEach() method
-myMap.forEach((value, key) => console.log(`${key} = ${value}`)); // logs "key1=value1 " "key2=value2 "
+myMap.forEach((value, key) => {
+    console.log(`${key} = ${value}`);
+}); // logs "key1 = value1 " "key2 = value2 "
 
 // .entries()
-// List of all key value pairs, spreading into console log
+// List of all key-value pairs, spreading into console log
 console.log(...myMap.entries()) // logs ["key1", "value1"] ["key2", "value2"]
 
 // .keys()
 // List of all keys, spreading into console log
-console.log(...myMap.keys()) // logs "key1 " "key2 "
+console.log(...myMap.keys()) // logs "key1" "key2 "
 
 // .values()
 // List of all values, spreading into console log
-console.log(...myMap.values()) // logs "value1 " "value2 "
+console.log(...myMap.values()) // logs "value1" "value2 "
 
 // .set()
-// Set a key value pair
+// Set a key-value pair
 myMap.set('key3', 'value3');
 
 // .get()
-// Get a key value pair
-console.log(myMap.get('key3')); // logs "value3 "
+// Get a key-value pair
+console.log(myMap.get('key3')); // logs "value3"
 
 // .has()
 // Does a key have a value yet
 console.log(myMap.has('key3')); // logs true
 
 // .delete()
-//Delete a key value pair, by key
+//Delete a key-value pair, by key
 myMap.delete('key3')
 console.log(myMap.has('key3')) // logs false
 
 // .clear()
-//Clear all key value pairs
+//Clear all key-value pairs
 myMap.clear();
 
 // .size()
@@ -2668,10 +2669,10 @@ myMap.forEach( (value, key) => {
     console.log(`${key} = ${value}`);
     // logs:
     //
-    // "key1=s ome value for key 1 "
-    // "2=2 "
-    // "1=1,2,3 "
-    // "[object Object]=[ object Object] "
+    // "key1=s ome value for key 1"
+    // "2=2"
+    // "1=1,2,3"
+    // "[object Object]=[ object Object]"
     
 });
     </code></pre>
@@ -2686,7 +2687,7 @@ myMap.forEach( (value, key) => {
                             more
                             features and out of the box
                             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map ">methods</a>
-                            for working with key value pairs.</li>
+                            for working with key-value pairs.</li>
                         <li>Maps can be looped over using the for-of loop.</li>
                         <li>The key and the value can both be any type of value, unlike Object literals in which the
                             key
@@ -2702,7 +2703,7 @@ myMap.forEach( (value, key) => {
                         <li>The <code>.set()</code> method returns the Map. Thus, <code>.set()</code> can be chained
                             (i.e.
                             <code>myMap.set(key,value).add(key,value);</code>).</li>
-                        <li>Want to use Array methods on a Map simply spread the map into an array (i.e. <code>[...myMap].filter(...);</code>)</li>
+                        <li>If you want to use Array methods on a Map simply spread the map into an array (i.e. <code>[...myMap].filter(...);</code>)</li>
                         <li>A narrow version of <code>Map()</code> is also available called <code>weakMap()</code>. A
                             <code>weakMap()</code>, mainly differs from a <code>Map()</code> in that it can only hold
                             values that are objects and when a value is removed from a <code>weakMap()</code>, and it
@@ -2766,7 +2767,7 @@ console.log(...mySet.add('four')); // logs "one" "two" "three" "four"
 // .delete()
 //Delete a value
 mySet.delete('four')
-console.log(mySet.has('four'))
+console.log(mySet.has('four')) // logs false
 
 // .clear()
 //Clear all ordered values
@@ -2786,7 +2787,7 @@ console.log(mySet.size) // logs 0, because you just cleared the Set of values
                         <li>The <code>.add()</code> method returns the Set. Thus, <code>.add()</code> can be chained
                             (i.e.
                             <code>mySet.add('one').add('two');</code>).</li>
-                        <li>Want to use Array methods on a Set simply spread the set into an array (i.e. <code>[...mySet].filter(...);</code>)</li>
+                        <li>If you want to use Array methods on a Set simply spread the set into an array (i.e. <code>[...mySet].filter(...);</code>)</li>
                         <li>A narrow version of <code>Set()</code> is also available called <code>weakSet()</code>.
                             A <code>weakSet()</code>, mainly differs from a <code>Set()</code> in that it can only hold
                             values that are objects and when a value is removed from a <code>weakSet()</code>, and it
