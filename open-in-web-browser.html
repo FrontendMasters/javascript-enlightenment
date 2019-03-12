@@ -725,7 +725,7 @@ bindGreetingToObject(); //logs Bill because this value for bindGreetingToObject 
                     <code>JSON.parse()</code> will convert a string of JavaScript in
                     <a href="https://json.org/ ">JSON format</a> into real JavaScript values (i.e. Objects, Arrays,
                     Strings,
-                    Numbers, Booleans etc..).</p>
+                    Numbers, Booleans etc...).</p>
 
                 <pre class="line-numbers"><code class="language-js">
 var JSONValues = JSON.parse('{"name":"Bill","age":22}') // convert JSON string to JS values
@@ -2854,18 +2854,14 @@ Developer.prototype.fullNameAndLanguage = function () {
 
 // Add static helper function to Developer
 Developer.isJSdev = function(cody){
-    if(cody.language.toLowerCase() === 'javascript'){
-        return true;
-    }else{
-        return false;
-    }
+    return cody.language.toLowerCase() === 'javascript';
 };
 
 // Create an instance of Developer
-let cody = new Developer('Cody', 'Lindley', 'JavaScript');
+const cody = new Developer('Cody', 'Lindley', 'JavaScript');
 
 // Call fullNameAndLanguage() method
-console.log(cody.fullNameAndLanguage()); // logs "Cody Lindley (JavaScript)"
+console.log(cody.fullNameAndLanguage()); // logs "Cody Lindley develops JavaScript"
 
 // Call fullName() method
 console.log(cody.fullName()); // logs "Cody Lindley"
@@ -2903,11 +2899,7 @@ class Developer extends Human { // Have Developer inherit from Human
     }
     // Add static helper function to Developer
     static isJSdev (cody){
-        if(cody.language.toLowerCase() === 'javascript'){
-            return true;
-        }else{
-            return false;
-        }
+        return cody.language.toLowerCase() === 'javascript';
     }
 }
 
@@ -2915,7 +2907,7 @@ class Developer extends Human { // Have Developer inherit from Human
 let cody = new Developer('Cody', 'Lindley', 'JavaScript');
 
 // Call fullNameAndLanguage() method
-console.log(cody.fullNameAndLanguage()); // logs "Cody Lindley (JavaScript)"
+console.log(cody.fullNameAndLanguage()); // logs "Cody Lindley develops JavaScript"
 
 // Call fullName() method
 console.log(cody.fullName()); // logs "Cody Lindley"
@@ -2924,8 +2916,8 @@ console.log(cody.fullName()); // logs "Cody Lindley"
 console.log(Developer.isJSdev(cody)); // logs true
 </code></pre>
 
-                <p>The details of a <code>class</code> object will be broken down in this chapter. For now you should
-                    observed
+                <p>The details of a <code>class</code> object will be broken down in this chapter. For now, you should
+                    observe
                     from the newer
                     <code>class</code> syntax the following:</p>
 
@@ -2933,8 +2925,7 @@ console.log(Developer.isJSdev(cody)); // logs true
                     <li>The use of the <code>class</code>, <code>extend</code>, <code>constructor</code>, <code>super</code>,
                         and <code>static</code> keywords that were added to JavaScript to simplify prototypal
                         inheritance for
-                        object
-                        oriented
+                        object-oriented
                         minded developers (i.e. cleaner, concealing prototypal nuances, less boilerplate).
                     </li>
                     <li>The use of shorthand method names within the <code>class</code> object. Which is the only
@@ -2949,9 +2940,9 @@ console.log(Developer.isJSdev(cody)); // logs true
 
                 <h3>6.2 : The <code>class</code> Expression v.s. <code>class</code> Declaration</h3>
 
-                <p>A class can be define using either a class declaration or class expression.</p>
+                <p>A class can be defined using either a class declaration or class expression.</p>
 
-                <p>class declaration:</p>
+                <p>A class declaration:</p>
 
                 <pre class="line-numbers"><code class="language-js"> 
 class Human {
@@ -2971,17 +2962,18 @@ const jill = new Human();
 jill.classMethod();
                 </code></pre>
 
-                <p>class expression:</p>
+                <p>A class expression:</p>
 
                 <pre class="line-numbers"><code class="language-js"> 
 const Human = class optionalClassNameForReferenceInClassMethods {
-    constructor (firstName = '', lastName) {
+    constructor (firstName, lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
     // the optional name can be used to reference the class inside the class object
     classMethod (){
-        console.log(optionalClassNameForReferenceInClassMethods); // logs out class object backing property function
+        // logs out class object backing property function
+        console.log(optionalClassNameForReferenceInClassMethods);
     }
 }
 
@@ -3006,9 +2998,9 @@ jill.classMethod();
                             Doing so will also throw a type error.</li>
                         <li>A class can not be called without the <code>new</code> keyword.</li>
                         <li>When using class syntax the prototype of the class (e.g. <code>Human.prototype</code>) is
-                            read only.</li>
+                            read-only.</li>
                         <li>Class definitions are first class citizens (i.e. you can pass them to functions, return a
-                            class from a function, and assigned them to variables.</li>
+                            class from a function, and assigned them to variables).</li>
                     </ol>
                 </div>
 
@@ -3093,7 +3085,7 @@ console.log(bill.fullName()); // logs "Bill Jones"
                     </p>
                     <ol>
                         <li>Class methods are non-enumerable by default.</li>
-                        <li>Class methods are written using shorthand method naming.</li>
+                        <li>Class methods are written using the shorthand method naming.</li>
                         <li>The keyword <code>super.[class method]</code> within a class method can reference and or
                             call
                             the methods of the parent class (i.e. the class, a class inherits or is <code>extend</code>'ed
@@ -3115,7 +3107,7 @@ console.log(bill.fullName()); // logs "Bill Jones"
                     <code>[].forEach()</code>. <code>Array.isArray()</code> is a static method on the Array "class"
                     itself
                     while
-                    <code>[].foreach()</code> is a "class" method called on instances of an Array</p>
+                    <code>[].forEach()</code> is a "class" method called on instances of an Array</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // Define a Human class with a static method
@@ -3141,10 +3133,10 @@ Human.isHuman(pat); // logs true
                     </p>
                     <ol>
                         <li>Static methods are also inherited.</li>
-                        <li>From within a static method you can refer to other static methods with <code>this.staticMethodName</code>.
+                        <li>From within a static method, you can refer to other static methods with <code>this.staticMethodName</code>.
                             But inside a constructor or class method you will have to either use <code>ClassName.staticMethodName</code>
                             or
-                            <code>this.constructor.staticMethodName</code></li>
+                            <code>this.constructor.staticMethodName</code>.</li>
                     </ol>
                 </div>
 
@@ -3192,15 +3184,15 @@ console.log(cody.fullName()); // logs "Cody Lindley"
                         <strong>Notes:</strong>
                     </p>
                     <ol>
-                        <li>Built-in objects can be extended or sub-classed not just user defined class's.</li>
+                        <li>Built-in objects can be extended or sub-classed not just user-defined classes.</li>
                         <li>This inheritance link gives scope access to <code>Human</code> from <code>Developer</code>
                             using
                             the keyword <code>super</code>.</li>
                         <li>If a sub-class is missing a constructor, the parent constructor is called. If a sub-class
                             does
-                            have a constructor, it will need to call <code>super()</code> with the expect arguments to
+                            have a constructor, it will need to call <code>super()</code> with the expected arguments to
                             call
-                            the parents constructor.
+                            the parent's constructor.
                         </li>
                     </ol>
                 </div>
@@ -3252,14 +3244,14 @@ class Lawyer extends Human {
 }
 
 // Create an instance of Developer, both the Developer and Human constructors are invoked.
-let cody = new Developer('Cody', 'Lindley', 'JavaScript');
+const cody = new Developer('Cody', 'Lindley', 'JavaScript');
 console.log(cody.fullName()) 
-// works because Developer and Lawyer have a firstName and lastName setup by calling super()
+// works because Developer has a firstName and lastName setup by calling super()
 
 // Create an instance of Lawyer, both the Lawyer and Human constructors are invoked.
-let lisa = new Lawyer('Lisa', 'Lindley', 'Criminal');
+const lisa = new Lawyer('Lisa', 'Lindley', 'Criminal');
 console.log(lisa.fullName()) 
-// works because Developer and Lawyer have a firstName and lastName setup by calling super()
+// works because Lawyer has a firstName and lastName setup by calling super()
 
     </code></pre>
 
@@ -3307,10 +3299,10 @@ class Developer extends Human { // Have Developer inherit from Human
 }
 
 // Create an instance of Developer
-let cody = new Developer('Cody', 'Lindley', 'JavaScript');
+const cody = new Developer('Cody', 'Lindley', 'JavaScript');
 
 // Call fullNameAndLanguage() method
-console.log(cody.fullNameAndLanguage()); // logs "Cody Lindley (JavaScript)"
+console.log(cody.fullNameAndLanguage()); // logs "Cody Lindley develops JavaScript"
     </code></pre>
 
                 <h3>6.9 : Extending JavaScript Built-in's and Web API Constructors/Classes using <code>class</code>
@@ -3320,7 +3312,7 @@ console.log(cody.fullNameAndLanguage()); // logs "Cody Lindley (JavaScript)"
                     had <a href="http://perfectionkills.com/how-ecmascript-5-still-does-not-allow-to-subclass-an-array/">significant
                         limitations</a>.</p>
 
-                <p>Today, extending the JavaScript Array() class is trivial using class syntax.</p>
+                <p>Today, extending the JavaScript <code>Array()</code> class is trivial using class syntax.</p>
 
                 <pre class="line-numbers"><code class="language-js noRun">
 class MyCustomArray extends Array{
@@ -3363,7 +3355,7 @@ console.log(myCustomArrayInstance.customEntriesMethod());
 
                 <section class="sub">
 
-                    <p>This chapter will examine the need for JavaScript Promises and then explain there usage.</p>
+                    <p>This chapter will examine the need for JavaScript Promises and then explain their usage.</p>
                 </section>
 
                 <h3>7.1 : Asynchronous Programming Basics</h3>
@@ -4154,7 +4146,7 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
                     <li>Modules with native private scope that did not have to reach into the
                         global scope
                         to talk to other modules (i.e. the ability to import and export modules from within modules
-                        without reaching into the global scope.).</li>
+                        without reaching into the global scope).</li>
                     <li>Explicitly defined dependencies within a module (i.e. <code>import</code>).</li>
                     <li>Explicitly defined values within a module that can be shared with other modules (i.e. <code>export</code>).</li>
                     <li>A runtime loading API with a native runtime dependency tree.</li>
@@ -4203,7 +4195,7 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
                         <strong>Notes:</strong>
                     </p>
                     <ol>
-                        <li>It is common today to see
+                        <li>Still, as of 2019, it is common to see
                             module bundlers (e.g. Webpack and Parcel) used in place of a native module loading API
                             (e.g. developers use bundlers today to transform ES module syntax into historical ES5 script
                             files and these files don't use the native web module
