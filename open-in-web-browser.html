@@ -28,6 +28,21 @@
             <h1>ES2015+ Enlightenment</h1>
 
             <h3 style="margin-top:0px">Grokking Modern JavaScript, In The Wild</h3>
+
+            <h5 style="margin-top:0px">
+                    Written by
+                    <a href="http://codylindley.com/">Cody Lindley</a>
+                  </h5>
+                  <section>
+                        <p>
+                          <em
+                            >Sponsored by
+                            <a href="https://frontendmasters.com/">Frontend Masters</a>,
+                            advancing your skills with in-depth, modern front-end engineering
+                            courses</em
+                          >
+                        </p>
+                      </section>
             <section>Today, tools like
                 <a href="https://babeljs.io/">Babel</a> have made it commonplace to see
                 <a href="http://www.ecma-international.org/ecma-262/6.0/">ES2015</a>, ES2016, ES2017, ES2018, and
@@ -770,7 +785,7 @@ var myObject = {
                         <strong>Notes:</strong>
                     </p>
                     <ol>
-                        <li>Be aware, trailing commas are not allowed in JSON</li>
+                        <li>Be aware, trailing commas are not allowed in JSON.</li>
                         <li>ES2017 will allow trailing commas when defining function parameters or calling a function with
                             arguments.
                             However, calling a function with a comma alone or defining a function parameter as a comma
@@ -818,10 +833,10 @@ var myObject = {
                             update/change has been
                             standardized
                             does not mean those who make use of the ECMAScript standard will implement the
-                            updates/change.
+                            updates/change
                             (i.e.,
                             adoption of new standards is a slow and often complicated affair e.g., browser
-                            compatibility)</li>
+                            compatibility).</li>
                     </ol>
                 </div>
             </div>
@@ -1861,7 +1876,7 @@ let { first:first, last:last } = { first: 'Bill', last: 'May' };
                             <strong>Notes:</strong>
                         </p>
                         <ol>
-                            <li>Parentheses are required around object destructuring when the expression is assigning values (i.e. <code>{a, b} = {a: 1, b: 2};</code> will throw an error but <code>({a, b} = {a: 1, b: 2});</code> will not)</li>
+                            <li>Parentheses are required around object destructuring when the expression is assigning values (i.e. <code>{a, b} = {a: 1, b: 2};</code> will throw an error but <code>({a, b} = {a: 1, b: 2});</code> will not).</li>
                         </ol>
                     </div>
 
@@ -2005,7 +2020,7 @@ console.log([...[1, 2], ...[3, 4, 5]]); // logs [1,2,3,4,5]
                             or old Arrays, and spread Array elements into a function call as arguments. Spreading an
                             Array
                             can replaces usages of
-                            <code>.concat().</code>
+                            <code>.concat()</code>.
                         </li>
                     </ol>
                 </div>
@@ -2029,7 +2044,7 @@ console.log({...obj1, ...obj2}); // logs {bob: false, steve: false, lisa: true}
                         <strong>Notes:</strong>
                     </p>
                     <ol>
-                        <li>Spreading objects was added in <a href="http://kangax.github.io/compat-table/es2016plus/#test-object_rest/spread_properties">ES2018</a></li>
+                        <li>Spreading objects was added in <a href="http://kangax.github.io/compat-table/es2016plus/#test-object_rest/spread_properties">ES2018</a>.</li>
                         <li>Order matters, last property and value spread wins.</li>
                         <li>Spreading Objects into object literals is commonly used to clone Objects, merge objects
                             into
@@ -2691,7 +2706,7 @@ myMap.forEach( (value, key) => {
                         <li>Maps can be looped over using the for-of loop.</li>
                         <li>The key and the value can both be any type of value, unlike Object literals in which the
                             key
-                            is typically a string</li>
+                            is typically a string.</li>
                         <li>When should you use Maps over object literals? Use a Map when you are performing a lot of
                             work
                             on the entries and the built in methods make everything simpler (<code>clear()</code>,
@@ -2703,7 +2718,7 @@ myMap.forEach( (value, key) => {
                         <li>The <code>.set()</code> method returns the Map. Thus, <code>.set()</code> can be chained
                             (i.e.
                             <code>myMap.set(key,value).add(key,value);</code>).</li>
-                        <li>If you want to use Array methods on a Map simply spread the map into an array (i.e. <code>[...myMap].filter(...);</code>)</li>
+                        <li>If you want to use Array methods on a Map simply spread the map into an array (i.e. <code>[...myMap].filter(...);</code>).</li>
                         <li>A narrow version of <code>Map()</code> is also available called <code>weakMap()</code>. A
                             <code>weakMap()</code>, mainly differs from a <code>Map()</code> in that it can only hold
                             values that are objects and when a value is removed from a <code>weakMap()</code>, and it
@@ -2787,7 +2802,7 @@ console.log(mySet.size) // logs 0, because you just cleared the Set of values
                         <li>The <code>.add()</code> method returns the Set. Thus, <code>.add()</code> can be chained
                             (i.e.
                             <code>mySet.add('one').add('two');</code>).</li>
-                        <li>If you want to use Array methods on a Set simply spread the set into an array (i.e. <code>[...mySet].filter(...);</code>)</li>
+                        <li>If you want to use Array methods on a Set simply spread the set into an array (i.e. <code>[...mySet].filter(...);</code>).</li>
                         <li>A narrow version of <code>Set()</code> is also available called <code>weakSet()</code>.
                             A <code>weakSet()</code>, mainly differs from a <code>Set()</code> in that it can only hold
                             values that are objects and when a value is removed from a <code>weakSet()</code>, and it
@@ -3042,7 +3057,7 @@ console.log(may);
                     <ol>
                         <li>A constructor function is optional. If you omit one, a blank constructor is created for you
                             (i.e.
-                            <code>constructor(){}</code>)</li>
+                            <code>constructor(){}</code>).</li>
                         <li>The keyword <code>super()</code>, within the <code>constructor</code> is used to call the
                             parent
                             class (i.e. the class, a class inherits or is <code>extend</code>'ed from).</li>
@@ -3093,8 +3108,8 @@ console.log(bill.fullName()); // logs "Bill Jones"
                         </li>
                         <li>Getters and Setters (aka Accessors descriptors or computed properties) can be used on class
                             methods
-                            (i.e. <code>class MyClass { get MyMethod(){...} set MyMethod(x){...} }</code>)</li>
-                        <li>Computed property names can be used within class definitions (i.e. <code>['method'+'Name'](){ ... })</code></li>
+                            (i.e. <code>class MyClass { get MyMethod(){...} set MyMethod(x){...} }</code>).</li>
+                        <li>Computed property names can be used within class definitions (i.e. <code>['method'+'Name'](){ ... })</code>.</li>
                     </ol>
                 </div>
 
@@ -3835,7 +3850,7 @@ fetch('https://api.github.com/repos/fanebook/react/commits') // broken URL, face
             <ol>
                 <li>The <code>catch()</code> method is typically used over providing each <code>then()</code> with a rejection parameter.</li>
                 <li> Notice how readable the code in this section becomes once a single rejection function was used via a <code>catch()</code> over providing a rejection function for each <code>then()</code>.</li>
-                <li>The <code>catch()</code> method is simply a short-hand for, <code>.then(null, error => { // do something with error })</code></li>
+                <li>The <code>catch()</code> method is simply a short-hand for, <code>.then(null, error => { // do something with error })</code>.</li>
             </ol>
         </div>
         
@@ -3894,7 +3909,7 @@ fetch('https://swapi.co/api/peoples/') // breaks because the URL is people not p
         <strong>Notes:</strong>
     </p>
     <ol>
-        <li>The <code>finally()</code> method was added in <a href="http://kangax.github.io/compat-table/es2016plus/#test-Promise.prototype.finally">ES2018</a></li>
+        <li>The <code>finally()</code> method was added in <a href="http://kangax.github.io/compat-table/es2016plus/#test-Promise.prototype.finally">ES2018</a>.</li>
         <li>This method is typically used to clean up things that might have been changed while a chain of Promises are being resolved (i.e. turn a loader UI off and return either data or an error in place of the loading UI).</li>
     </ol>
 </div>
@@ -4470,7 +4485,7 @@ export {value1, value2}; // named exports
 export const value3 = 'value3';
 
 // default export, using default keyword
-export default const value4 = 'value4';
+export default value4 = 'value4';
     </code></pre><br>
                     <li>A module can simultaneously import multiple values and a single default value from other
                         modules
