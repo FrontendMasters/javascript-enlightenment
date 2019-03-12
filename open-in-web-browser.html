@@ -3326,6 +3326,7 @@ let myCustomArrayInstance = new MyCustomArray('one', 'two', 'three');
 myCustomArrayInstance.push('four');
 
 console.log(myCustomArrayInstance.customEntriesMethod());
+// logs [["0", "one"], ["1", "two"], ["2", "three"], ["3", "four"]]
     </code></pre>
 
                 <p>Even, JavaScript web API's like the DOM can be extended.</p>
@@ -3339,7 +3340,7 @@ console.log(myCustomArrayInstance.customEntriesMethod());
                     <ol>
                         <li>If you run the above code through Babel is will break. Sub-classing constructors/classes
                             has to be supported natively. Transpiling and polyfilling
-                            can't help and in fact will break the code. The environment either supports extending
+                            can't help and in fact, will break the code. The environment either supports extending
                             built-in classes/object or it does not. If you extend natives make sure you are not also
                             babel'ifying/transpiling the code.</li>
                     </ol>
@@ -3379,7 +3380,7 @@ console.log('I am not delayed by 10 seconds from running');
                     run
                     10'ish seconds in the future without blocking other code from running. Consider that the <code>setTimeout()</code> function argument is not all that different from a callback function for a click event or a callback function used to capture the response from an <code>XMLHttpRequest</code> network request.</p>
 
-                <p>Basically when you ask JavaScript to wait to run some code, while not blocking the rest of the program from running, you are dealing with asynchronous code.</p>
+                <p>Basically, when you ask JavaScript to wait to run some code, while not blocking the rest of the program from running, you are dealing with asynchronous code.</p>
 
                     <div class="notes">
 
@@ -3387,7 +3388,7 @@ console.log('I am not delayed by 10 seconds from running');
                             <strong>Notes:</strong>
                         </p>
                         <ol>
-                            <li>An in-depth understanding of asynchronous programming in JavaScript requires an understanding of the call stack and the event-loop. Here is a simple and concise review of the these parts, <a href="https://vimeo.com/96425312">"Help, I’m stuck in an event-loop."</a>. If you've struggled with in the past with understanding promises it is likley because you lack the foundational information found in the aforementioned video.</li>
+                            <li>An in-depth understanding of asynchronous programming in JavaScript requires an understanding of the call stack and the event-loop. Here is a simple and concise review of these parts, <a href="https://vimeo.com/96425312">"Help, I'm stuck in an event-loop."</a>. If you've struggled in the past with understanding promises it is likly because you lack the foundational information found in the aforementioned video.</li>
                         </ol>
                     </div>
 
@@ -3419,7 +3420,7 @@ console.log('I am not delayed by 10 seconds from running');
                     error
                     handling situation. </p>
                     
-                    <p>I hope you can see that using callbacks alone, to complete the task just mentioned, using somthing like the <code>XMLHttpRequest</code>
+                    <p>I hope you can see that using callbacks alone, to complete the task just mentioned, using something like the <code>XMLHttpRequest</code>
                     web
                     API will either lead to a pyramid of callback functions:
                     
@@ -3477,9 +3478,9 @@ getData3(function(z){
                         <strong>Notes:</strong>
                     </p>
                     <ol>
-                        <li>Originally, promises were called "Futures" and was part of the DOM spec. Thankfully, in the end it ended up in the ECMAScript specification so all JavaScript runtimes could use Promises
+                        <li>Originally, promises were called "Futures" and were a part of the DOM spec. Thankfully, in the end it ended up in the ECMAScript specification so all JavaScript runtimes could use Promises
                             for asynchronous programming.</li>
-                        <li>Unfortunately IE does not support promises and it will have to be <a href="https://github.com/zloirock/core-js#ecmascript-promise">polyfilled</a> if you need IE support. However the Edge browser (12+) does have support.</li>
+                        <li>Unfortunately, IE does not support promises and it will have to be <a href="https://github.com/zloirock/core-js#ecmascript-promise">polyfilled</a> if you need IE support. However the Edge browser (12+) does have support.</li>
                     </ol>
                 </div>
 
@@ -3535,7 +3536,7 @@ myPromise.then( // takes two functions,
 <pre class="line-numbers"><code class="language-js">
 // Create a function that will return a Promise
 
-let getGitHubData = (gitHubRESTPath) => {
+const getGitHubData = (gitHubRESTPath) => {
     // return a Promise so the .then() method can be called on returned value
     return new Promise((resolve, reject) => { // this is the executer function
         // start asynchronous work
@@ -3574,7 +3575,7 @@ getGitHubData('repos/facebook/react').then( // use then() to consume the eventua
     }
 );
 
-// Send a bad url, to see reject function run
+// Send a bad URL, to see reject function run
 getGitHubData('repos/nothing/nothing').then( // use then() to consume the eventual results
     //resolve function
     (response) => {
@@ -3583,7 +3584,7 @@ getGitHubData('repos/nothing/nothing').then( // use then() to consume the eventu
     },
     //reject function
     (error) => {
-        console.log(error); // logs 'XHR Error'
+        console.log(error); // logs 'Not Found'
     }
 );
 
@@ -3591,7 +3592,7 @@ getGitHubData('repos/nothing/nothing').then( // use then() to consume the eventu
 
 <p>By wrapping the <code>Promise</code> itself with the <code>getGitHubData</code> function I can call the <code>getGitHubData</code> function like an API. The "mini api" provides a cleaner interface for working with asynchronous HTTP requests to the Github REST API because a Promise is used/returned.</p>
                     
-                    <p>To consume the returned promise the <code>then()</code> method is used to to capture both the resolution of the asynchronous code and potentially any resulting errors (i.e. <code>then()</code> takes two arguments. First argument is resolution function, called when promise is resolved, second is a rejection function, called if the promise is rejected).</p>
+                    <p>To consume the returned promise the <code>then()</code> method is used to capture both the resolution of the asynchronous code and potentially any resulting errors (i.e. <code>then()</code> takes two arguments. First argument is resolution function, called when promise is resolved, second is a rejection function, called if the promise is rejected).</p>
 
 
 <div class="notes">
@@ -3602,7 +3603,7 @@ getGitHubData('repos/nothing/nothing').then( // use then() to consume the eventu
     <ol>
         <li>The executor function pass to <code>Promise()</code> is called before the Promise constructor returns the created object.</li>
         <li>If an error is thrown in the executor function the promise is rejected.</li>
-        <li>Promises have a three states or life cycles (pending > resolved || rejected > settled). The promise starts in a pending state. Then it either moves to a fulfilled (i.e. resolved) or rejected state. Once in a fulfilled or rejected state the promise is consider to be settled. Once settled a promise is settled it can't change its state.</li>
+        <li>Promises have three states or life cycles (pending > resolved || rejected > settled). The promise starts in a pending state. Then it either moves to a fulfilled (i.e. resolved) or rejected state. Once in a fulfilled or rejected state the promise is considered to be settled. Once settled, a promise can't change its state. Settled means, settled.</li>
         <li>One should consider a Promise as a stand-in for a value that has yet to be determined. In short, you use a promise to wrap asynchronous routines and then use promise methods to provide callback functions for the routines.</li>
     </ol>
 </div>
@@ -3611,7 +3612,7 @@ getGitHubData('repos/nothing/nothing').then( // use then() to consume the eventu
 
                 <p>Since promises are native to the language several JavaScript runtimes can make use of Promises. For example, the new <a  href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a>, which replaces the older <code>XMLHttpRequest</code> API returns a promise by default. Thus, instead of having to create a promise, all you have to do is consume the promise returned from calling <code>fetch()</code>.</p>
 
-                <p>I've re-written the code from the previous section to use the new <a  href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a>. By using the <a  href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> I don't need to produce a <code>Promise</code> object manually, one is simply given to me by the web browsers <a  href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a>. As you can see in the code example below when a promise is returned all that is left to do is to consume the promise using promise methods (e.g. <code>then()</code> method)</p>
+                <p>I've re-written the code from the previous section to use the new <a  href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a>. By using the <a  href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a> I don't need to produce a <code>Promise</code> object manually, one is simply given to me by the web platforms <a  href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a>. As you can see in the code example below when a promise is returned all that is left to do is to consume the promise using promise methods (e.g. <code>then()</code> method)</p>
 
 <pre class="line-numbers"><code class="language-js">
 // Get number of stars for React on github
@@ -3624,11 +3625,11 @@ fetch('https://api.github.com/repos/facebook/react')
         },
         //reject function
         (error) => {
-            console.log(error.toString()); // log "undefined"
+            console.log(error.toString()); // logs "undefined"
         }
     );
 
-// Send a bad url, to see reject function run
+// Send a bad URL, to see reject function run
 fetch('htttps://www.badnogoodurl.com')
     .then( // use then() to consume the eventual results
         //resolve function
@@ -3652,11 +3653,11 @@ fetch('htttps://www.badnogoodurl.com')
 
 <pre class="line-numbers"><code class="language-js">
 Promise.resolve('value1')
-    .then(value => console.log(value)); // logs "valu1"
+    .then(value => console.log(value)); // logs "value1"
 
 // The above is a shortcut for this:
 new Promise(resolve => resolve('value2'))
-    .then(value => console.log(value)); // logs 'value2'
+    .then(value => console.log(value)); // logs "value2"
 
 </code></pre>
 
@@ -3664,11 +3665,11 @@ new Promise(resolve => resolve('value2'))
 
 <pre class="line-numbers"><code class="language-js">
 Promise.reject('error1')
-    .then(() => {}, error => console.log(error)); // logs 'error1'
+    .then(() => {}, error => console.log(error)); // logs "error1"
   
 // The above is a shortcut for this: 
 new Promise((resolve, reject) => {reject('error2');})
-    .then(() => {}, error => console.log(error)); //logs 'error2'
+    .then(() => {}, error => console.log(error)); //logs "error2"
         
 </code></pre>
 
@@ -3686,7 +3687,7 @@ new Promise((resolve, reject) => {reject('error2');})
 
 <h3>7.6 : Chaining Promises with <code>then()</code></h3>
 
-<p>The <code>then()</code> method is used to provide a resolution and rejection function for a promise. Remember, a promise runs/contains asynchronous code. This asynchronous code when complete can call one of two functions either resolve() or reject(). The <code>then()</code> method accounts for both of these calls. If <code>resolve()</code> is called then the first function to <code>then()</code> is invoked. If <code>reject()</code> is called then the second function pass to <code>then()</code> is called.</p>
+<p>The <code>then()</code> method is used to provide a resolution and rejection function for a promise. Remember, a promise runs/contains asynchronous code. This asynchronous code when complete can call one of two functions either <code>resolve()</code> or <code>reject()</code>. The <code>then()</code> method accounts for both of these calls. If <code>resolve()</code> is called then the first function to <code>then()</code> is invoked. If <code>reject()</code> is called then the second function pass to <code>then()</code> is called.</p>
 
 <p>In the code example below I am using <code>then()</code> to extract the commits on Github for React, then extract the author of the last commit, then log that author to the console.</p>
 
@@ -3709,11 +3710,11 @@ fetch('https://api.github.com/repos/facebook/react/commits')
     // get name, pass it to the next then(), note I am not passing a promise but just a simple value
     .then(user => user.name, error => console.log(error))
     // log the name of the last person to commit code to the react repository
-    .then(name => console.log(name + 'is the last person to commit to React repository'));
+    .then(name => console.log(name + ' is the last person to commit to React repository'));
 
 </code></pre>
 
-<p>It is important to remember, and you may of notice in the previous code example, that the <code>then()</code> method can be used to chain any value not just promises. In the code example below I demonstrate using the promise API to simply transfer data through a promise chain.</p>
+<p>It is important to remember, and you may have noticed in the previous code example, that the <code>then()</code> method can be used to chain any value not just promises. In the code example below I demonstrate using the promise API to simply transfer data through a promise chain.</p>
     
 <pre class="line-numbers"><code class="language-js">
 // create a promise that is already resolved with a specific 'foo' value.
@@ -3733,7 +3734,10 @@ myPromise.then((data)=>{
 <p>However, the <code>then()</code> method was specifically designed to chain promises that are doing asynchronous activities. In the following code example I use the promise chain to verify all the starwars API endpoints are functioning.</p>
 
 <pre class="line-numbers"><code class="language-js">
+
 let starWarsAPICheck = [];
+
+console.log('Wait for it...! Data from another Galaxy yo!');
 
 // chain a set of promise to occur one after the other
 // check the starwars api to see if all endpoints are working.
@@ -3758,7 +3762,7 @@ fetch('https://swapi.co/api/people')
 });
 
 // Note the previous chain all happen sequentially
-// To make all the call in parallel Promise.all() could be used.
+// To make all the calls run in parallel, Promise.all() could be used.
 
 </code></pre>
     
@@ -3775,10 +3779,10 @@ myPromise.then((data)=>{
     throw Error('yo this then() is no good');  // will cause reject callback in next then() to run
 }).then(
     (data)=>{console.log(data)}, // does not run
-    (error)=>{console.log(error.toString())},
+    (error)=>{console.log(error.toString())}, //logs 'yo this then() is no good'
 ).then((data)=>{
     console.log('note this still runs');
-    console.log(data); // but this lost foo
+    console.log(data); // logs undefined, foo is undefined
 });
 
 </code></pre>
@@ -3797,23 +3801,23 @@ myPromise.then((data)=>{
 
 <h3>7.7 : Catching Rejections in the Chain with <code>catch()</code></h3>
 
-<p>When rejection errors occur within a promise chain the <code>catch()</code> method can be used to capture the rejection. This can be handy for two reason. first off, you can write a single error handle for a long list of chained promises and the first rejection in the chain will get passed on to the <code>catch()</code>. Secondly, because <code>catch()</code> returns a promise, just like <code>then()</code>, you can keep chaining with more <code>then()</code>'s or <code>catch()</code>'s. Basically one could perform several asynchronous routines and use one <code>catch()</code> if any errors occur, then continue on with more <code>then()</code>'s or <code>catch()</code>'s' at will.</p>
+<p>When rejection errors occur within a promise chain the <code>catch()</code> method can be used to capture the rejection. This can be handy for two reasons. First off, you can write a single error handle for a long list of chained promises and the first rejection in the chain will get passed on to the <code>catch()</code>. Secondly, because <code>catch()</code> returns a promise, just like <code>then()</code>, you can keep chaining with more <code>then()</code>'s or <code>catch()</code>'s. Basically, one could perform several asynchronous routines and use one <code>catch()</code> if any errors occur, then continue on with more <code>then()</code>'s or <code>catch()</code>'s' at will.</p>
 
 <p>In the code example below a broken API call is kicked off and a <code>catch()</code> method at the end of the chain captures the error.</p>
 
 <pre class="line-numbers"><code class="language-js">
 
-fetch('https://api.github.com/repos/fanebook/react/commits') // broken url, facebook not fanebook
+fetch('https://api.github.com/repos/fanebook/react/commits') // broken URL, facebook not fanebook
     .then(response => response.json())
     .then((json) => {
         // this throws an error because the json passed in is bad
-        // it is bad because the original url is wrong facebook, not fanebook
+        // it is bad because the original URL is wrong facebook, not fanebook
         // so json[0].author.login is a bad reference
         // so this function throws an error which is caught in the first catch() in the chain
         return fetch('https://api.github.com/users/'+json[0].author.login);
     })
     .then(response => response.json()) // response.json() returns a promise
-    .then(data => console.log(data.name + ' is the last person to commit to React repository'))
+    .then(data => console.log(data.name + ' is the last person to commit to React repository')) // never logs
     .catch(error => { // any error issue in the previous then()'s are trapped here
         console.log(error.toString());
     })
@@ -3831,21 +3835,21 @@ fetch('https://api.github.com/repos/fanebook/react/commits') // broken url, face
             <ol>
                 <li>The <code>catch()</code> method is typically used over providing each <code>then()</code> with a rejection parameter.</li>
                 <li> Notice how readable the code in this section becomes once a single rejection function was used via a <code>catch()</code> over providing a rejection function for each <code>then()</code>.</li>
-                <li>The <code>catch()</code> method is simply a short hand for, <code>.then(null, error => { // do something with error })</code></li>
+                <li>The <code>catch()</code> method is simply a short-hand for, <code>.then(null, error => { // do something with error })</code></li>
             </ol>
         </div>
         
 
 <h3>7.8 : Running a Final Function, Regardless of Promise Fulfillment State with <code>finally()</code></h3>
 
-<p>When a situation exist that you'd like to run a function regardless of if a promise is resolved or rejected you can use the <code>finally()</code> method. This method makes it possible to run code no matter what occurs previously in the promise chain.</p>
+<p>When a situation exists that you'd like to run a function regardless of if a promise is resolved or rejected you can use the <code>finally()</code> method. This method makes it possible to run code no matter what occurs previously in the promise chain.</p>
 
 <p>In the code example below I demonstrate how the <code>finally()</code> method is invoked regardless of the fulfillment paths through the promise chain.</p>
 
 <pre class="line-numbers"><code class="language-js">
 let stateOfLoading = 'Not Loading'; // this is the default state
 
-fetch('https://swapi.co/api/peoples/') // breaks because the url is people not peoples
+fetch('https://swapi.co/api/peoples/') // breaks because the URL is people not peoples
     .then((response) => {
         if(!response.ok){ // run if fetch fails
             throw Error('api call broke'); // catch() is called
@@ -3869,12 +3873,10 @@ fetch('https://swapi.co/api/peoples/') // breaks because the url is people not p
         () => { // finally does not take in parameters
         // runs no matter what
         stateOfLoading = 'Not Loading';
-        console.log(stateOfLoading);
         },
         () => { // finally does not take in parameters
         // runs no matter what
         stateOfLoading = 'Not Loading';
-        console.log(stateOfLoading);
         },
     )
     */
@@ -3938,37 +3940,37 @@ Promise.race([
 
                 <section class="sub">
 
-                        <p>This chapter covers asynchronous functions (i.e <code>(async () => {})();</code>) and the use of the <code>await</code> operator with <code>async</code> functions so asynchronous code can be written to look more like synchronous/procedural code.</p>
+                        <p>This chapter covers asynchronous functions (i.e <code>(async () => {})();</code>) and the use of the <code>await</code> operator with <code>async</code> functions so that asynchronous code can be written to look more like synchronous/procedural code.</p>
                     </section>
 
                 <h3>8.1 : The <code>async</code>/<code>await</code> syntax is not a replacement for promises</h3>
 
-                <p>It would be a mistake thinking <code>async</code> functions and the <code>await</code> operator completely replaces the use of promises. Or, that one need not clearly understand promises before using <code>async</code> functions and the <code>await</code> operator. Thus, an in-depth reading of the previous chapter is necessary to read this chapter.</p> 
+                <p>It would be a mistake thinking <code>async</code> functions and the <code>await</code> operator completely replaces the use of promises. Or, that one need not clearly understand promises before using <code>async</code> functions and the <code>await</code> operator. Thus, an in-depth reading of the previous chapter is necessary to comprehend this chapter.</p> 
                     
-                    <p>An <code>async</code> function returns a promise that is typically resolved using the <code>await</code> operator. Think of an <code>async</code> function as a syntactical replacement for a executor function and the <code>await</code> operator as an inline syntactical replacement for <code>then()</code>.</p>
+                    <p>An <code>async</code> function returns a promise that is typically resolved using the <code>await</code> operator. Think of an <code>async</code> function as a syntactical replacement for an executor function and the <code>await</code> operator as an inline syntactical replacement for <code>then()</code>.</p>
 
                     <p>Ultimately what you need to keep in mind is that the async/await syntax enhances promises, it does not replace promises!</p>
     
-                <h3>8.2 : The benefits of use <code>async</code> functions and the <code>await</code> operator</h3>
+                <h3>8.2 : The benefits of using <code>async</code> functions and the <code>await</code> operator</h3>
 
                 <p>Using <code>async</code> functions and the <code>await</code> operator to handle asynchronous code is a stylistic choice with some subjective benefits over traditional promises.</p>
 
-                <p>In the code example below I've augment some code from the previous chapter creating a utility function that uses an <code>async</code> function and the <code>await</code> operator instead of a long <code>.then()</code> promise chain.</p>
+                <p>In the code example below I've augmented the Github promise code from the previous chapter creating a utility function that uses an <code>async</code> function and the <code>await</code> operator instead of a long <code>.then()</code> promise chain.</p>
 
 <pre class="line-numbers"><code class="language-js">
 let stateOfLoading = 'Not Loading'; // this is the default state
 
-// just add async to arrow function, now this function returns a promise and can use await operator
+// add async keyword to arrow function, now this function returns a promise and can use await operator
 const getLastGitHubCommitAuthor = async (owner, repo) => {
     try {
         stateOfLoading = "Loading";
-        // await pauses this function until the promise from fetch is fullfilled
+        // await pauses this function until the promise from fetch is fulfilled
         const commits = await fetch(`https://api.github.com/repos/${owner}/${repo}/commits`);
-        // await pauses this function until the promise from .json() is fullfilled
+        // await pauses this function until the promise from .json() is fulfilled
         const jsonCommits = await commits.json(); // json() returns a promise
-        // await pauses this function until the promise from fetch is fullfilled
+        // await pauses this function until the promise from fetch is fulfilled
         const author = await fetch(`https://api.github.com/users/${jsonCommits[0].author.login}`);
-        // await pauses this function until the promise from .json() is fullfilled
+        // await pauses this function until the promise from .json() is fulfilled
         const jsonAuthor = await author.json(); // json() returns a promise
         return jsonAuthor.name; // a string is returned, but it is wrapped in a Promise
     } catch (error) { // any and all errors from the try and caught here, sort of like .catch()
@@ -3992,7 +3994,7 @@ getLastGitHubCommitAuthor('facebook', 'react')
 let stateOfLoading = 'Not Loading'; // this is the default state
 
 const getLastGitHubCommitAuthor = (owner, repo) => {
-    // explicity return a the promise from the end of the chain
+    // explicitly return a promise from the end of the chain
     return fetch(`https://api.github.com/repos/${owner}/${repo}/commits`)
         .then(response => response.json()) // json() returns a promise
         .then(jsonCommits => fetch(`https://api.github.com/users/${jsonCommits[0].author.login}`))
@@ -4017,9 +4019,9 @@ getLastGitHubCommitAuthor('facebook', 'react')
                 <p>You should note the async/await solution offers the following subjective benefits:</p>
 
                 <ul>
-                    <li>Notice how asynchronous code has moved closer to a synchronous/procedural style (i.e. do this, then do this, then do this). Many people find this easier to read and maintain then using method chaining boilerplate.</li>
+                    <li>Notice how asynchronous code has moved closer to a synchronous/procedural style (i.e. do this, then do this, then do this). Many people find this easier to read and maintain than using method chaining boilerplate.</li>
                     <li>Notice the reduction of chaining boilerplate (i.e. only used one <code>then()</code> not a long chain of them).</li>
-                    <li>Notice the efficiency of using a <code>try</code>, <code>catch</code>, and <code>finally</code> to capture both asynchronous and synchronous errors and run code regardless of where the error occurs. (i.e. similar to how <code>.catch()</code> and <code>.finally()</code> works for long promise chains). In general, avoiding callback functions passed to then() means less cruft around errors being thrown.</li>
+                    <li>Notice the efficiency of using a <code>try</code>, <code>catch</code>, and <code>finally</code> to capture both asynchronous and synchronous errors and run code regardless of where the error occurs. (i.e. similar to how <code>.catch()</code> and <code>.finally()</code> works for long promise chains). In general, avoiding callback functions passed to <code>then()</code> means less cruft around errors being thrown.</li>
                     <li>Consider also that using the async/wait syntax could flat out potential child chains (i.e. <code>then()</code> chains inside of <code>then()</code> chains) and simplify conditional asynchronous activity.</li>
                 </ul>
 
@@ -4032,7 +4034,7 @@ getLastGitHubCommitAuthor('facebook', 'react')
                         </p>
                         <ol>
                             <li>The async keyword works with all functions; function expressions (e.g. <code>const foo = async function () {};</code>), function declarations <code>(e.g. async function foo() {}</code>), method definition (e.g. <code>let obj = { async foo() {} }</code>), and the arrow function (e.g. <code>const foo = async () => {}</code>).</li>
-                            <li>Don't forget, the <code>await</code> keyword only works inside a <code>async</code> function and is used to pause a function until a promise is fullfilled.</li>
+                            <li>Don't forget, the <code>await</code> keyword only works inside a <code>async</code> function and is used to pause a function until a promise is fulfilled.</li>
                             <li>The async keyword placed in front of a function creates a special kind of function object called, "AsyncFunction". The AsyncFunction constructor is not a global object but you can obtain a reference to the constructor using <code>Object.getPrototypeOf(async function(){}).constructor</code>.</li>
                         </ol>
                     </div>
@@ -4040,7 +4042,7 @@ getLastGitHubCommitAuthor('facebook', 'react')
 
                 <h3>8.3 : Asynchronous functions return an implicit <code>Promise</code></h3>
 
-                <p>If a promise is not explicitly return from an async function then one is implicitly returned. The result being that a promise is always returned from an <code>async</code> function.</p>
+                <p>If a promise is not explicitly returned from an async function then one is implicitly returned. The result is that a promise is always returned from an <code>async</code> function.</p>
 
 <pre class="line-numbers"><code class="language-js">
 // an async function that returns the value 5
@@ -4049,7 +4051,7 @@ var myAsyncFunction = async () => {
 }
 
 // verify async returns an implicit promise, wrapping the value 5
-console.log(myAsyncFunction() instanceof Promise); //Logs true
+console.log(myAsyncFunction() instanceof Promise); // logs true
 
 // use then() to get value returned from myAsyncFunction
 myAsyncFunction().then((value) => { console.log(value) }); // logs 5
@@ -4064,13 +4066,13 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs 5
 // an async function that returns the value 5
 var myAsyncFunction = async () => {
     const awaitedPromiseValue = await 5;
-    // The above is like explictly writing: 
+    // The above is like explicitly writing: 
     // const awaitedPromiseValue = await Promise.resolve(5);
 }
 
 // use then() to get value returned from myAsyncFunction
 myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
-// nothing was returned so implicity underfined is returned
+// nothing was returned so implicitly undefined is returned
 // i.e. Promise.resolve(undefined);
 
 </code></pre>
@@ -4087,7 +4089,7 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
 
                 <h3>8.5 : The <code>await</code> operator is sequential</h3>
 
-                <p>It might be obvious but just like the <code>then()</code> method the <code>await</code> operator waits for promise resolution/fulfillment before movinh on to the next line of code so to speak. This means to run parallel asynchronous routines instead of sequential routines the static <code>Promise</code> methods <code>Promise.all()</code> and <code>Promise.race()</code> can be used.</p>
+                <p>It might be obvious but just like the <code>then()</code> method the <code>await</code> operator waits for promise resolution/fulfillment before moving on to the next line of code so to speak. This means to run parallel asynchronous routines instead of sequential routines the static <code>Promise</code> methods <code>Promise.all()</code> and <code>Promise.race()</code> can be used.</p>
 
 <pre class="line-numbers"><code class="language-js">
 (async () => { // create async function that is immediately invoked
@@ -4143,7 +4145,7 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
                     following:</p>
 
                 <ul>
-                    <li>Modules with native private scope that did not have to reach into the
+                    <li>Modules with a native private scope that did not have to reach into the
                         global scope
                         to talk to other modules (i.e. the ability to import and export modules from within modules
                         without reaching into the global scope).</li>
@@ -4169,7 +4171,7 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
                     </p>
                     <ol>
                         <li>JavaScript modules are based on <a href="https://nodejs.org/docs/latest-v10.x/api/modules.html">CommonJS
-                                modules (aka Node.js modules)</a>. In the future JavaScript modules will likely replace
+                                modules (aka Node.js modules)</a>. In the future, JavaScript modules will likely replace
                             commonJS modules. In fact, JavaScript module syntax was introduced experimentally into
                             Node.js v8.5.0. But keep in mind imported values in CommonJS are copies of values while
                             imported values in ES modules are live read-only values.</li>
@@ -4223,12 +4225,12 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
 
                 <ol>
                     <li>Values define in script files loaded into an HTML document are defined in the global
-                        scope (except for function and block scoped values contained in the script file).</li>
-                    <li>By default the <code>script1.js</code> is loaded/parsed by the browser engine before moving on
+                        scope (except for function and block scoped values contained in the script files).</li>
+                    <li>By default, the <code>script1.js</code> is loaded/parsed by the browser engine before moving on
                         to
                         <code>script2.js</code> (unless the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>async</code></a>
                         attribute is used). By default, scripts are loaded/parsed synchronously.</li>
-                    <li>By default all <code>&lt;script&gt;</code>'s' block the html parser (unless the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>defer</code></a>
+                    <li>By default all <code>&lt;script&gt;</code>'s' block the HTML parser (unless the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>defer</code></a>
                         attribute is used).</li>
                 </ol>
 
@@ -4256,29 +4258,29 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
                     <li>Each <code>&lt;script&gt;</code>
                         has its own entry file and <a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/">dependency
                             graph</a>. </li>
-                    <li>A ES module can be written inline or be written in a separate file and pulled into the current
+                    <li>An ES module can be written inline or be written in a separate file and pulled into the current
                         HTML
                         file using the <code>src</code> attribute.</li>
-                    <li>A ES module runs code in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">strict
+                    <li>An ES module runs code in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">strict
                             mode</a>
                         by default.</li>
-                    <li>Values defined in a ES module that are not <code>export</code>'ed are scoped only to that
+                    <li>Values defined in an ES module that are not <code>export</code>'ed are scoped only to that
                         module,
                         these values
                         don't leak into the
                         global scope.</li>
-                    <li>ES Module are singletons in the sense that only a single instance of it
+                    <li>ES modules are singletons in the sense that only a single instance of it
                         exists. Basically, only one instance of it is used no
                         matter how many times it is <code>import</code>'ed.</li>
                     <li>ES Modules still have access to the global context (i.e. the top level runtime scope). In a
                         browser this would be the global <code>window</code> context. However, the use of the keyword
                         <code>this</code> will not work inside of a module to reference the global runtime scope.</li>
                     <li>The use of the <code>import</code> and <code>export</code> syntax can be used within the module
-                        to import other modules and export values, so other module can import those values. By doing
+                        to import other modules and export values, so other modules can import those values. By doing
                         this you create a graph of dependencies between modules that the loading API uses to figures
                         out
-                        how to run the JavaScript (i.e. manage dependencies).</li>
-                    <li>Exports from a ES module are static. Meaning, once they have been defined and imported they can
+                        how to run the JavaScript (i.e. managed dependencies).</li>
+                    <li>Exports from an ES module are static. Meaning, once they have been defined and imported they can
                         not be
                         changed
                         later.</li>
@@ -4305,13 +4307,13 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
                             React you
                             will have to import that module using a relative URL not the name of the package installed
                             in node_modules.</li>
-                        <li>The file extension <code>.js</code> can be omitted from the url specifier string.</li>
-                        <li>ES modules are static meaning they can’t be changed at runtime. This allows for things like
+                        <li>The file extension <code>.js</code> can be omitted from the URL specifier string.</li>
+                        <li>ES modules are static meaning they can't be changed at runtime. This allows things like
                             static checking and optimizations when importing and bundling.</li>
                         <li>You can request a module hosted on another domain if it uses <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">CORS</a>
                             (e.g. <code>import value from 'https://otherdomain.com/modules/module1.js';</code>).</li>
-                        <li>Using the native web browser module loading API for systems that have more than a 100+
-                            modules could come at a performance cost (depends upon size of dependency graph) and thus
+                        <li>Using the native web browser module loading API for systems that have more than 100+
+                            modules could come at a performance cost (depends upon the size of dependency graph) and thus
                             asset bundlers are in common use today to avoid performance related issues in production.</li>
                         <li>All static module dependencies have to be downloaded and executed before the code will run.
                             If you are wondering how you conditionally import a module you will have to use a dynamic
@@ -4326,15 +4328,15 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
 
                 <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import"><code>import</code></a>
                     statement has a dual purposed. It can be used to import other modules statically as well as
-                    dynamically. When the import statement is used like
-                    a function, and the module path/specifier is passed to it as a argument, a module can be loaded
+                    dynamically. When the import statement is used as
+                    a function, and the module path/specifier is passed to it as an argument, a module can be loaded
                     dynamically (e.g. <code>import('./module1.js')</code>)
                     ). The return value from using <code>import</code> as a function is a <code>Promise</code>.
                     Essentially
                     this means you can
                     asynchronously load ES modules after all the static modules have been loaded into the runtime.</p>
 
-                <p>In the code below after clicking anywhere on the html document, in the browser window, the lodash
+                <p>In the code below after clicking anywhere on the HTML document, in the browser window, the lodash
                     <code>forEach</code>
                     <a href="https://unpkg.com/lodash-es@4.17.11/forEach.js">ES module</a> is loaded from the <a href="https://unpkg.com">unpkg.com</a>
                     CDN and used to log out the context of an array.</p>
@@ -4365,7 +4367,7 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
 
                 <p>Asset bundlers like <a href="https://webpack.js.org/">Webpack</a> and <a href="https://parceljs.org/">Parcel</a>
                     are in wide use today. These asset
-                    bundlers are used because they provide a system that will modulerize and load many different asset
+                    bundlers are used because they provide a system that will modularize and load many different asset
                     types and formats. Not just JavaScript Modules! For
                     example,
                     <a href="https://webpack.js.org/">Webpack</a> and <a href="https://parceljs.org/">Parcel</a> can
@@ -4374,11 +4376,11 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
                     and then bundle these differing assets/formats into a production state.</p>
 
                 <p>Bundlers like <a href="https://webpack.js.org/">Webpack</a> and <a href="https://parceljs.org/">Parcel</a>
-                    can also analyse
+                    can also analyze
                     JavaScript files
                     written using ES module syntax and create from these files a dependency graph that is
                     then used to output one or many (aka code splitting) production runnable ES5 files. The
-                    outputted JavaScript won't typically use the web browser module loading API or module syntax, but
+                    outputted JavaScript won't typically use the web browser module loading API or module syntax but
                     instead will load as an ES5 script file would
                     have before ES modules.</p>
 
@@ -4407,7 +4409,7 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
                     <ol>
                         <li>ES module syntax and semantics are lost when bundled by modern day assert bundlers.</li>
                         <li>Asset bundlers can do much more than simply convert ES6
-                            module syntax into runnable ES5 code. But fundamental to modern
+                            module syntax into runnable ES5 code. Fundamental to modern
                             day
                             bundlers is the process of taking ES modules syntax and JavaScript 2015+ code (via Babel)
                             and
@@ -4462,7 +4464,7 @@ const value2 = 'value2';
 
 // export specific named values using export keyword
 export {value1, value2}; // named exports
-// Note export syntax is not destructuring
+// Note export syntax, looks like destructuring syntax but is not destructuring
 
 // inline export
 export const value3 = 'value3';
@@ -4473,7 +4475,7 @@ export default const value4 = 'value4';
                     <li>A module can simultaneously import multiple values and a single default value from other
                         modules
                         using the keywords <code>import</code> and <code>from</code>
-                        along with a url
+                        along with a URL
                         specifier string identifier (i.e. the relative or full URL file path to the module whose values are being
                         imported):</li>
                     <br>
@@ -4484,11 +4486,11 @@ export default const value4 = 'value4';
 // import the default value and three named values from myModule.js
 import nameGivenToDefaultValue, {value1, value2, value3} from './myModule.js';
 // Note how the default value along with named values are imported together
-// Note import syntax is not destructuring
+// Note export syntax, looks like destructuring syntax but is not destructuring
 
 // This module now has access to the imported values above
 console.log(nameGivenToDefaultValue, value1, value2, value3); 
-//logs value3, value1, value2, value4
+//logs value4, value1, value2, value3
     </code></pre>
                     <br>
                 </ol>
@@ -4504,27 +4506,26 @@ console.log(nameGivenToDefaultValue, value1, value2, value3);
                         <strong>Notes:</strong>
                     </p>
                     <ol>
-                        <li>A url specifier must be a path to a module using full URLs, or relative URLs starting with
+                        <li>An URL specifier must be a path to a module using full URLs, or relative URLs starting with
                             <code>/</code>, <code>./</code>, or <code>../</code>. However, if one is using an asset
-                            bundler the url specifier can also be the
+                            bundler (e.g. webpack) the URL specifier can also be the
                             name of the module package (i.e.<code> import {React} from 'react'</code>) if the asset
                             bundler has been configured to sort out the path to the module by package name.</li>
-                        <li>The file extension <code>.js</code> can be omitted from the url specifier string.</li>
+                        <li>The file extension <code>.js</code> can be omitted from the URL specifier string.</li>
                         <li>Imports are hoisted to the top of the scope regardless of where they appear in the module.
                             Thus, most people place all imports at the start of a module.</li>
                         <li>Where exporting happens (i.e. inline or end of the module) is subjective preference based
                             on exporting styles.</li>
                         <li>Imports and exports can't natively be conditionally imported or exported without the use of a
-                            dynamic
-                            <code>import()</code> (i.e. don't think you can place imports in <code>conditional</code>
+                            <a href="https://developers.google.com/web/updates/2017/11/dynamic-import">
+                                dynamic
+                                <code>import()</code>
+                            </a> (i.e. don't think you can place imports in <code>conditional</code>
                             statements without using a dynamic <code>import()</code>).</li>
-                        <li>ES modules are in <code>strict mode</code> by default (i.e. regardless of if you explicitly
-                            make it so).</li>
-                        <li>ES modules have access to the global scope (e.g. <code>window</code>) but no <code>this</code>
-                            value.</li>
-                        <li>Circular dependencies are supported. Module 1 imports a value from module 2. Module 2
-                            imports a value from module 1.
-                            These modules depended upon each other and because modules are static this circular
+                        <li>ES modules are in <code>strict mode</code> by default.</li>
+                        <li>ES modules have access to the global scope (e.g. <code>window</code>) but not using <code>this</code>
+                            value. The global scope has to be reference with a point to the global scope (e.g. <code>window</code>).</li>
+                        <li>Circular dependencies are supported (e.g. module 1 can import a value from modules 2, and at the same time module 2 can import value from module 1.). These modules depended upon each other and because modules are static this circular
                             dependency is resolved before either module is executed.</li>
                     </ol>
                 </div>
@@ -4545,11 +4546,13 @@ console.log(nameGivenToDefaultValue, value1, value2, value3);
 export const simpleString = 'simpleString';
 export const simpleFunction = () => {};
 export const simpleNumber = 5;
-export class myClass = {};
+export class myClass {};
 export function myFunction(){};
 
-// Note this won't work
-export 5; // this will throw an error an expression or declaration is expected
+// Note these won't work
+// this will throw an error an expression or declaration is expected
+export 5;
+export simpleString;
 
 </code></pre>
 
@@ -4561,12 +4564,11 @@ export 5; // this will throw an error an expression or declaration is expected
 const simpleString = 'simpleString';
 const simpleFunction = () => {};
 const simpleNumber = 5;
-class myClass = {};
+class myClass {};
 function myFunction(){};
 
-// exporting references
-export simpleString; // style for a single reference
-export {simpleFunction, simpleNumber, myClass, myFunction}; //style for multiple references
+// style for multiple references
+export {simpleString, simpleFunction, simpleNumber, myClass, myFunction};
       
 </code></pre>
 
@@ -4578,7 +4580,7 @@ export {simpleFunction, simpleNumber, myClass, myFunction}; //style for multiple
 const sF = 'simpleString';
 const sS = () => {};
 const sN = 5;
-class mC = {};
+class mC {};
 function mF(){};
 
 // exporting multiple renamed references
@@ -4592,7 +4594,7 @@ export {sF as simpleFunction, sS as simpleString, sN as simpleNumber, mC as myCl
                 <p><strong>1. Importing a single named export:</strong></p>
 
                 <pre class="line-numbers"><code class="language-js noRun">
-// This is module2.js, import values into this module from module1.js
+// This is module2.js, import a single value into this module from module1.js
                 
 import {simpleString} from './module1.js';
 
@@ -4600,14 +4602,14 @@ console.log(simpleString);
 
 </code></pre>
 
-                <p><strong>2. Importing a multiple named exports:</strong></p>
+                <p><strong>2. Importing multiple named exports:</strong></p>
 
                 <pre class="line-numbers"><code class="language-js noRun">
-// This is module2.js, import values into this module from module1.js
+// This is module2.js, import multiple values into this module from module1.js
     
 import {simpleString, simpleFunction, simpleNumber, myFunction} from './module1.js';
 
-console.log(simpleString, simpleFunction, simpleNumber);
+console.log(simpleString, simpleFunction, simpleNumber, myFunction);
 
 </code></pre>
 
@@ -4615,7 +4617,7 @@ console.log(simpleString, simpleFunction, simpleNumber);
                         module):</strong></p>
 
                 <pre class="line-numbers"><code class="language-js noRun">
-// This is module2.js, import values into this module from module1.js
+// This is module2.js, import all values into this module from module1.js
 
 import * as m1 from './module1.js';
 
@@ -4626,7 +4628,7 @@ console.log(m1.simpleString, m1.simpleFunction, m1.simpleNumber, m1.myClass, m1.
                 <p><strong>4. Importing multiple named exports, renamed:</strong></p>
 
                 <pre class="line-numbers"><code class="language-js noRun">
-// This is module2.js, import values into this module from module1.js
+// This is module2.js, import renamed values into this module from module1.js
 
 import {simpleString as sS, myClass as mF } from './module1.js';
 
@@ -4647,7 +4649,7 @@ console.log(sS, mF);
                 <pre class="line-numbers"><code class="language-js noRun">
 // moduleA.js 
 // Of course only one default can be used per module. 
-// Each export below would could not live in the same file, it would throw an error
+// Each export below would not live in the same file, it would throw an error
 // Consider each line below to be in its own module
 
 // literal values (no const or let used)
@@ -4658,16 +4660,18 @@ export default {};
 export default [];
    
 // expressions
-export default const simpleString = 'simpleString';
-export default const simpleNumber = 5;
+const simpleString = 'simpleString';
+const simpleNumber = 5;
+export default simpleString;
+export default simpleNumber;
 export default (() => {});
 
 // declarations
-export default class myClass = {} // semicolon optional with this style 
+export default class myClass {} // semicolon optional with this style 
 export default function myFunction(){} // semicolon optional with this style
 
 // unnamed declarations
-export default class = {} // semicolon optional with this style
+export default class {} // semicolon optional with this style
 export default function(){} // semicolon optional with this style
 
 </code></pre>
@@ -4717,12 +4721,12 @@ console.log(nameGivenHereToDefault);
 
                 <pre class="line-numbers"><code class="language-js noRun">              
 // moduleA.js
-
-export default const myString = 'myString';
-const myFunction = () => {};
+const myString = 'myString';
+export default myString;
+const myFunction = () => { };
 export const myNumber = 5;
 
-export {myFunction};
+export { myFunction };
 
 </code></pre>
 
@@ -4745,9 +4749,9 @@ console.log(nameGivenHereToDefault, myFunction, myNumber);
                 <pre class="line-numbers"><code class="language-js noRun"> 
 // moduleB.js                    
 
-import nameGivenHereToDefault, * as namespace from './moduleA.js';
+import * as namespace from './moduleA.js';
 
-console.log(nameGivenHereToDefault, namespace.myFunction, namespace.myNumber);
+console.log(namepsace.default, namespace.myFunction, namespace.myNumber);
 
 </code></pre>
 
@@ -4756,7 +4760,7 @@ console.log(nameGivenHereToDefault, namespace.myFunction, namespace.myNumber);
                 <p>ES modules do not create copied values when importing values. Instead, ES
                     modules create pointers/references to live values.</p>
 
-                <p>In the code example below the <code>counter</code> and <code>addToCounter()</code> value are
+                <p>In the code example below the <code>counter</code> and <code>addToCounter()</code> values are
                     imported into module1.js, from module2.js. From module1.js I call
                     the <code>addToCounter()</code> function, imported from module2.js, which changes the value of <code>counter</code>
                     in module2.js and thus
@@ -4767,7 +4771,8 @@ console.log(nameGivenHereToDefault, namespace.myFunction, namespace.myNumber);
                         11.2+, Chrome Android 69+)</a></div>
 
                 <pre class="line-numbers"><code class="language-markup">
-&lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;utf-8&quot; /&gt;&#10;&lt;/head&gt;&#10;&#10;&lt;body&gt;&#10;&#10;    &lt;!--  Entry module is module1.js, dependency graph starts here --&gt;&#10;    &lt;script type=&quot;module&quot; src=&quot;./module1.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!--  module1.js imports and uses module2.js --&gt;&#10;&#10;    &lt;!-- module1.js&#10;        import { counter, addToCounter } from &quot;./module2.js&quot;; &#10;        console.log(counter); // logs 0 &#10;        addToCounter(10); &#10;        console.log(counter); // logs 10&#10;&#10;&#10;        // Note, can&apos;t do this:&#10;        // counter = 10;&#10;    --&gt;&#10;&#10;    &lt;!-- module2.js&#10;        export let counter = 0; &#10;        &#10;        export const addToCounter = function(amountToAdd) { &#10;            counter = counter + amountToAdd; &#10;        };&#10;    --&gt;&#10;&#10;&lt;/body&gt;&#10;&lt;/html&gt;
+<!DOCTYPE html>
+&lt;html&gt;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;utf-8&quot; /&gt;&#10;&lt;/head&gt;&#10;&#10;&lt;body&gt;&#10;&#10;    &lt;!--  Entry module is module1.js, dependency graph starts here --&gt;&#10;    &lt;script type=&quot;module&quot; src=&quot;./module1.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!--  module1.js imports and uses module2.js --&gt;&#10;&#10;    &lt;!-- module1.js&#10;        import { counter, addToCounter } from &quot;./module2.js&quot;; &#10;        console.log(counter); // logs 0 &#10;        addToCounter(10); &#10;        console.log(counter); // logs 10&#10;&#10;&#10;        // Note, can&apos;t do this:&#10;        // counter = 10;&#10;    --&gt;&#10;&#10;    &lt;!-- module2.js&#10;        export let counter = 0; &#10;        &#10;        export const addToCounter = function(amountToAdd) { &#10;            counter = counter + amountToAdd; &#10;        };&#10;&#10;        export const foo = &quot;foo&quot;;    &#10;    --&gt;&#10;&#10;&lt;/body&gt;&#10;&lt;/html&gt;
     </pre></code>
 
                 <p>Keep in mind that imported values can't directly be changed. In other words, in the code example
