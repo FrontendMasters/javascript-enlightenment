@@ -24,7 +24,7 @@ os: linux
 #   may cause associated deployments to fail.
 files:
   - source: /
-    destination: /var/www/fes2015-plus-enlightenment 
+    destination: /var/www/es2015-plus-enlightenment 
 
 permissions:
   - object: /var/www/es2015-plus-enlightenment 
