@@ -26,9 +26,13 @@ a svg {
     background-color: #fcdcce;
     border-bottom-color: #1a1a1a;
 }
-#panel a.nostyle {
+#panel a.logo {
     background: none;
     border: none;
+}
+
+#panel a.logo svg {
+    max-width: 50%;
 }
 
 section {
