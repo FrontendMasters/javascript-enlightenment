@@ -3,6 +3,15 @@ body {
     height: 100%;
 }
 
+img, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+a svg {
+    background: none;
+}
+
 #panel a:link {
     background-color: #fdefe8;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -16,6 +25,10 @@ body {
 #panel a:hover {
     background-color: #fcdcce;
     border-bottom-color: #1a1a1a;
+}
+#panel a.nostyle {
+    background: none;
+    border: none;
 }
 
 section {
