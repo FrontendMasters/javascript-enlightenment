@@ -218,7 +218,7 @@ console.log(someMethod)
     </code></pre>
 
                 <p>The <code>[].every()</code> method will start testing values in array,
-                    <strong>until a test returns true</strong>, then the function passed to <code>.every()</code> immediately returns <code>true</code>, otherwise the function returns <code>false</code> (i.e. the first truthy value found will result in the function immediately returning true and potentially this could mean not all tests are run).</p>
+                    <strong>until a test returns false</strong>, then the function passed to <code>.every()</code> immediately returns <code>false</code>, otherwise the function returns <code>true</code> (i.e. the first falsy value found will result in the function immediately returning false and potentially this could mean not all tests are run).</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // Check if every item in the array is bigger than or equal to 2
