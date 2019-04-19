@@ -20,7 +20,7 @@ ES2015+ Enlightenment is not a rudimentary read on the JavaScript language. The 
 
 ---
 
-**How to Use/Read This Book:**:
+**How to Use/Read This Book**:
 
 First off, this is a mix between a book, a reference, and cheatsheet. My intention in writing is to shine a light on ES5+ language changes in a tersely and helpfully format. To be clear this is not a long form book on the JavaScript language. Or, a detailed reference. Consider this an elaborate cheatsheet with runnable code purposefully curated for those who know ES3 but need to master ES5+.
 
@@ -28,20 +28,23 @@ Second, this is a web book. A lot of contexts can be gained by just clicking on 
 
 ---
 
-**How to Use/Read The Code Examples:**:
+**How to Use/Read The Code Examples**:
 
 Try and view the code examples as an extension of the words. First, read and re-read the words. Then read the code, especially the code comments, from top to bottom as if they are part of the surrounding paragraphs. The goal should be to grok the code until no questions remain as to what the code example is doing and expressing.
 
 ---
 
-**Read Online**:
+**While Using/Reading the book remember, by design**:
 
 - The words and code comments are intentionally terse with the goal of code comprehension without long-winded and exhaustive explanations.
 - The code examples are contrived to reveal the nature of the code. Focus on what the code is doing and making sure you understand it, potentially over my words.
 - The book is a mix of a mini book, a reference, and cheatsheet. Expect it to feel like one of these or all of these at the same time.
 
-[https://frontendmasters.com/books/javascript-enlightenment/](https://frontendmasters.com/books/javascript-enlightenment/)
+---
 
+**Read Online:**:
+
+[https://frontendmasters.com/books/javascript-enlightenment/](https://frontendmasters.com/books/javascript-enlightenment/)
 
 ---
 
