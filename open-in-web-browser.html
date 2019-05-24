@@ -1828,9 +1828,9 @@ console.log(add()) //logs 0
                     properties
                     from an object and assigning/reassigning them to one or more variables in a terse expression. Below
                     are
-                    three code examples of each of these destructing expressions just mentioned.</p>
+                    three code examples of each of these destructuring expressions just mentioned.</p>
 
-                <p>1. Destructing Strings:</p>
+                <p>1. Destructuring Strings:</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // destructuring Strings characters into the variables a, b, and c
@@ -1850,7 +1850,7 @@ console.log(c); // logs o
 */
     </code></pre>
 
-                <p>2. Destructing Arrays:</p>
+                <p>2. Destructuring Arrays:</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // destructuring an Array of elements in the variables one, two, and three
@@ -1860,7 +1860,7 @@ console.log(two); // 2
 console.log(three); // 3
     </code></pre>
 
-                <p>3. Destructing Objects:</p>
+                <p>3. Destructuring Objects:</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // destructuring an Object properties in the variables f and l
@@ -1967,19 +1967,19 @@ func('foo');
                     value can be setup.</p>
 
                 <pre class="line-numbers"><code class="language-js">
-// Note: Fallback to default value when destructing Strings
+// Note: Fallback to default value when destructuring Strings
 const [a='f', b='o', c='o'] = '';
 console.log(a); // log f
 console.log(b); // log o
 console.log(c); // log o
 
-// Note: Fallback to default value when destructing Arrays
+// Note: Fallback to default value when destructuring Arrays
 const [one=1, two=2, three=3] = [undefined,44,undefined];
 console.log(one); // log 1
 console.log(two); // log 44
 console.log(three); // log 3
 
-// Note: Fallback to default value when destructing Objects
+// Note: Fallback to default value when destructuring Objects
 const { first: f = 'John', last: l = 'Doe' } = { first: 'Mary' };
 console.log(f); // log Mary
 console.log(l); // log Doe
@@ -2113,7 +2113,7 @@ const func = function(param1, param2, ...restOfArguments) {
 func(1,2,3,4,5,6,7); // logs 1 2 [3, 4, 5, 6, 7]
     </code></pre>
 
-                <p>2. When destructing, remaining values can be wrapped up too:</p>
+                <p>2. When destructuring, remaining values can be wrapped up too:</p>
 
                 <pre class="line-numbers"><code class="language-js">
 // destructuring String characters in the variables a, b, c, and the rest into d Array
@@ -2465,7 +2465,7 @@ for (const entry of myMap){
 }
     </code></pre>
 
-    <p>As of ES2017 one can use <code>Object.entries()</code> and destructing with the for-of loop
+    <p>As of ES2017 one can use <code>Object.entries()</code> and destructuring with the for-of loop
         to
         loop over Object literals.:</p>
 
