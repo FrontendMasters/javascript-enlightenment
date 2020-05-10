@@ -3869,7 +3869,7 @@ fetch('https://api.github.com/repos/fanebook/react/commits') // broken URL, face
             <ol>
                 <li>The <code>catch()</code> method is typically used over providing each <code>then()</code> with a rejection parameter.</li>
                 <li> Notice how readable the code in this section becomes once a single rejection function was used via a <code>catch()</code> over providing a rejection function for each <code>then()</code>.</li>
-                <li>The <code>catch()</code> method is simply a short-hand for, <code>.then(null, error => { // do something with error })</code>.</li>
+                <li>The <code>catch()</code> method is simply a short-hand for, <code>.then(undefined, error => { // do something with error })</code>.</li>
             </ol>
         </div>
         
