@@ -4815,7 +4815,7 @@ console.log(namepsace.default, namespace.myFunction, namespace.myNumber);
                         11.2+, Chrome Android 69+)</a></div>
 
                 <pre class="line-numbers"><code class="language-markup">
-<!DOCTYPE html>
+&lt;!DOCTYPE html&gt;
 &lt;html&gt;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;utf-8&quot; /&gt;&#10;&lt;/head&gt;&#10;&#10;&lt;body&gt;&#10;&#10;    &lt;!--  Entry module is module1.js, dependency graph starts here --&gt;&#10;    &lt;script type=&quot;module&quot; src=&quot;./module1.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!--  module1.js imports and uses module2.js --&gt;&#10;&#10;    &lt;!-- module1.js&#10;        import { counter, addToCounter } from &quot;./module2.js&quot;; &#10;        console.log(counter); // logs 0 &#10;        addToCounter(10); &#10;        console.log(counter); // logs 10&#10;&#10;&#10;        // Note, can&apos;t do this:&#10;        // counter = 10;&#10;    --&gt;&#10;&#10;    &lt;!-- module2.js&#10;        export let counter = 0; &#10;        &#10;        export const addToCounter = function(amountToAdd) { &#10;            counter = counter + amountToAdd; &#10;        };&#10;&#10;        export const foo = &quot;foo&quot;;    &#10;    --&gt;&#10;&#10;&lt;/body&gt;&#10;&lt;/html&gt;
     </pre></code>
 
