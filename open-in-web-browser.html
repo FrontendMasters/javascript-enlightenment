@@ -30,6 +30,16 @@
 
     <div id="panel">
 
+        <div class="FmCta">
+            <a class="FmCtaLogo" href="https://frontendmasters.com/">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 206.7 145.8" class="logo"><path d="M182.6 20c1.7-1.8 4.2-2.7 7.7-2.7 2.5 0 5 .4 7.4 1.1 3.2 1 6.2 2.3 9 4a335.5 335.5 0 0 0-14.8 49.7 357 357 0 0 0-4.6 24c-1 6.3-1.6 12.8-1.7 19.3 0 2.2.3 4.5 1 6.6a8 8 0 0 0 2.7 4.2 16.1 16.1 0 0 1-7.1 5.2 23.5 23.5 0 0 1-8.7 1.7c-4 .1-7.7-1.2-10.6-3.8-3-2.5-4.4-6.8-4.4-13 0-3 .4-6 .8-9.1a492 492 0 0 1 10.8-47.4l-1.3.1c-.4.2-.7.5-1 .9l-40.6 62a40.8 40.8 0 0 1-13 2.5c-2.4 0-4.8-.5-7-1.5a9.1 9.1 0 0 1-4.3-5.4 273.5 273.5 0 0 0 1.8-21.5 949 949 0 0 0 1.4-29.6v-5.9c0-.6-.2-1.1-.4-1.6a1.3 1.3 0 0 0-1.1-.4c-9 16.2-16.7 29.8-23.3 40.8a307.2 307.2 0 0 1-17.8 27A69 69 0 0 1 50 141.2c-4.1 3-8.1 4.5-12 4.4-4.2.1-8.2-1.6-11-4.7-3-3.1-5-7.4-6-12.8.7.2 1.4.3 2.2.3 4.7 0 9.3-2 13.7-6 5.1-4.5 9.7-9.7 13.7-15.3 4.7-6.4 9.5-13.7 14.4-21.8C69.9 77.3 75 69 80.7 60.6c2-3.4 4.6-6.6 7.5-9.4 2.2-2 5-3.1 8-3 2 0 4 .3 5.9.8 1.1.1 2.1-.7 2.1-1.9-.7-9-3.4-15.8-8-20.6-4.7-4.7-11.3-7-19.8-7-6.9-.1-13.6 1.6-19.6 4.8-6.1 3.3-11.5 7.7-15.9 13a64 64 0 0 0-14.5 40.5c0 5.1 1.6 8.5 4.7 10a20.6 20.6 0 0 1-6.9 6 17.5 17.5 0 0 1-8.4 2.2c-4.2.1-8.2-1.4-11.2-4.3S0 84.2 0 77.9c0-7 1.1-13.8 3.4-20.4A79.4 79.4 0 0 1 26.6 23a96.9 96.9 0 0 1 36-20.3C69.2 1 75.7 0 82.5 0c16.2 0 28.5 5 36.6 15.1 8.2 10 12.3 25.8 12.3 47.1a308.6 308.6 0 0 1-1 26.3c.5 0 1 0 1.4-.2.4-.2.7-.5.8-.8l15-21.9h-.1c5.1-7.2 23.7-34.6 28.8-41.9.2-.4 1.6-2.8 3.2-3.2h.4l1.2-.1h.2a5.8 5.8 0 0 0 1.4-.3z"></path></svg>
+            </a>
+            <div class="FmCtaText">
+                <a href="https://frontendmasters.com/trial/">Get free, lifetime access to 5 popular courses</a>
+            </div>
+            <button data-cta-close class="FmCtaClose">&times;</button>
+        </div>
+
         <div id="menuButton">|||</div>
 
         <div id="bookPadding">
@@ -105,7 +115,7 @@
 
             <p><strong>Contribute content, suggestions, and fixes on github</strong>:</p>
 			<p><a href="https://github.com/FrontendMasters/javascript-enlightenment">https://github.com/FrontendMasters/javascript-enlightenment</a></p>
-			
+
             <hr>
 
             <div id="chapter1" class="chapter">
@@ -214,9 +224,9 @@ console.log(Array.isArray({length: 3, 0:1, 1:2, 2:3})) //logs false
 
                 <pre class="line-numbers"><code class="language-js">
 // Check if one or more items in the array is bigger than or equal to 2
-var someMethod = [1, 2, 3].some(function(value, valueIndex, wholeArray){ 
-    return value >= 2; 
-}); 
+var someMethod = [1, 2, 3].some(function(value, valueIndex, wholeArray){
+    return value >= 2;
+});
 
 console.log(someMethod)
 // logs true because the array contains a value that is greater than or equal to 2
@@ -227,9 +237,9 @@ console.log(someMethod)
 
                 <pre class="line-numbers"><code class="language-js">
 // Check if every item in the array is bigger than or equal to 2
-var everyMethod = [1, 2, 3].every(function(value, valueIndex, wholeArray){ 
-    return value >= 2; 
-}); 
+var everyMethod = [1, 2, 3].every(function(value, valueIndex, wholeArray){
+    return value >= 2;
+});
 
 console.log(everyMethod) // logs false because the array contains a value that is less than 2
     </code></pre>
@@ -241,8 +251,8 @@ console.log(everyMethod) // logs false because the array contains a value that i
                 <pre class="line-numbers"><code class="language-js">
 var myArray = [1,2,3];
 // filter out any value in the array that is not bigger than or equal to 2
-var FilteredArray = myArray.filter(function(value, valueIndex, wholeArray){ 
-    return value >= 2; 
+var FilteredArray = myArray.filter(function(value, valueIndex, wholeArray){
+    return value >= 2;
 });
 
 console.log(FilteredArray) // logs [2,3]
@@ -254,7 +264,7 @@ console.log(FilteredArray) // logs [2,3]
 
                 <pre class="line-numbers"><code class="language-js">
 // log to the console each value, valueIndex, and wholeArray passed to the function
-['dog','cat','mouse'].forEach(function(value, valueIndex, wholeArray){ 
+['dog','cat','mouse'].forEach(function(value, valueIndex, wholeArray){
     console.log('value = '+value+' valueIndex = '+valueIndex+' wholeArray = '+wholeArray);
     /** logs:
 
@@ -263,7 +273,7 @@ console.log(FilteredArray) // logs [2,3]
     "value=mouse valueIndex=2 wholeArray=dog,cat,mouse "
 
     **/
-});       
+});
     </code></pre>
 
                 <p>The <code>[].indexOf()</code> method searches an array for the
@@ -294,8 +304,8 @@ console.log(['dog','cat','mouse', 'cat'].lastIndexOf('cat')); // logs 3
                 <pre class="line-numbers"><code class="language-js">
 var myArray = [5, 15, 25];
 // add 10 to every number in the array
-var mappedArray = myArray.map(function(value, valueIndex, wholeArray){ 
-    return value + 10; 
+var mappedArray = myArray.map(function(value, valueIndex, wholeArray){
+    return value + 10;
 });
 
 console.log(mappedArray) // logs [15,25,35]
@@ -311,18 +321,18 @@ console.log(mappedArray) // logs [15,25,35]
 
                 <pre class="line-numbers"><code class="language-js">
 // add up numbers in array from left to right i.e. (((5+5) +5 ) + 2)
-var reduceMethod = [5, 5, 5, 2].reduce(function(accumulator, value, valueIndex, wholeArray){ 
-    return accumulator + value; 
-}); 
+var reduceMethod = [5, 5, 5, 2].reduce(function(accumulator, value, valueIndex, wholeArray){
+    return accumulator + value;
+});
 console.log(reduceMethod) // logs 17
 
-/** reduce also accepts a second parameter that sets the first accumulator value, 
+/** reduce also accepts a second parameter that sets the first accumulator value,
 instead of using the first value in the array. **/
 
 // add up numbers in array from left to right, but start at 10 i.e. ((((10+5) +5 ) +5 ) + 2)
-var reduceMethod = [5, 5, 5, 2].reduce(function(accumulator, value, valueIndex, wholeArray){ 
+var reduceMethod = [5, 5, 5, 2].reduce(function(accumulator, value, valueIndex, wholeArray){
     return accumulator + value; // first iteration of func accumulator is 10 not 5
-}, 10); 
+}, 10);
 console.log(reduceMethod) // logs 27
     </code></pre>
 
@@ -333,18 +343,18 @@ console.log(reduceMethod) // logs 27
 
                 <pre class="line-numbers"><code class="language-js">
 // add up numbers in array from left to right i.e. (((2+5) +5 ) + 5)
-var reduceRightMethod = [5, 5, 5, 2].reduceRight(function(accumulator, value, valueIndex, wholeArray){ 
-    return accumulator + value; 
-}); 
+var reduceRightMethod = [5, 5, 5, 2].reduceRight(function(accumulator, value, valueIndex, wholeArray){
+    return accumulator + value;
+});
 console.log(reduceRightMethod) // logs 17
 
-/** reduce also accepts a second parameter that sets the first accumulator value, 
+/** reduce also accepts a second parameter that sets the first accumulator value,
 instead of using the first value in the array. **/
 
 // add up numbers in array from left to right, but start at 10 i.e. ((((10+2) + 5 ) +5 ) + 5)
-var reduceRightMethod = [5, 5, 5, 2].reduceRight(function(accumulator, value, valueIndex, wholeArray){ 
+var reduceRightMethod = [5, 5, 5, 2].reduceRight(function(accumulator, value, valueIndex, wholeArray){
     return accumulator + value; // first iteration of func accumulator is 10 not 5
-}, 10); 
+}, 10);
 console.log(reduceRightMethod) // logs 27
     </code></pre>
 
@@ -378,10 +388,10 @@ console.log(reduceRightMethod) // logs 27
 
 <pre class="line-numbers"><code class="language-js">
 var obj = {
-    get RunsWhenAccessed(){ 
+    get RunsWhenAccessed(){
         console.log('you accessed the property RunsWhenAccessed');
     },
-    set RunsWhenSet(newValueBeingSet){ 
+    set RunsWhenSet(newValueBeingSet){
         console.log('you set the property RunsWhenSet to : ' + newValueBeingSet);
     }
 }
@@ -520,7 +530,7 @@ Object.defineProperty(myObject, 'prop2', {
 // get the descriptors for the prop2 property.
 console.log(Object.getOwnPropertyDescriptor(myObject,'prop2'));
 
-// add multiple properties ('prop3' &amp; 'prop4') with 
+// add multiple properties ('prop3' &amp; 'prop4') with
 // descriptors to myObject using Object.defineProperties()
 Object.defineProperties(myObject, {
     prop3: {
@@ -616,7 +626,7 @@ console.log(myObject.prop4);
                     non-inherited
                     properties of a given object regardless of enumerability.</p>
 
-                <pre class="line-numbers"><code class="language-js">    
+                <pre class="line-numbers"><code class="language-js">
 // Create an object
 var myObject = Object.create(null); // no prototype used
 
@@ -675,7 +685,7 @@ console.log(Object.getOwnPropertyNames(myObject)); // logs ["myObjectProp1", "my
 
                 <h3>1.7 : New ES5 <code>bind()</code> Function Method</h3>
 
-                <p>Before ES5 functions could only be invoked and given a <code>this</code> value at innovation time
+                <p>Before ES5 functions could only be invoked and given a <code>this</code> value at invocation time
                     using
                     <code>apply()</code> or <code>call()</code>. In other words, these two methods make it possible to
                     call
@@ -769,7 +779,7 @@ console.log(JSONValues.name, JSONValues.age); // logs Bill, 22
                 <p><code>JSON.stringify()</code> takes JavaScript values and returns a string representing the values.</p>
 
                 <pre class="line-numbers"><code class="language-js">
-var JSONString = JSON.stringify({ name: 'Bill', age: 2 }); // Convert JS Object to JSON String 
+var JSONString = JSON.stringify({ name: 'Bill', age: 2 }); // Convert JS Object to JSON String
 console.log(typeof JSONString) // logs "string"
 console.log(JSONString) // logs "{ "name": "Bill", "age":2} "
     </code></pre>
@@ -1038,7 +1048,7 @@ var myFunction = function myFunction() {};
 &lt;!DOCTYPE html&gt;&#10;&lt;html&gt;&#10;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;utf-8&quot; /&gt;&#10;&lt;/head&gt;&#10;&#10;&lt;body&gt;&#10;&#10;    &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;&#10;    &lt;!-- Load ES2015+ Polyfill, core-js used by Babel polyfill --&gt;&#10;    &lt;script src=&quot;https://unpkg.com/core-js-bundle@3.0.0-beta.3/minified.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!-- Load Babel --&gt;&#10;    &lt;script src=&quot;https://unpkg.com/@babel/standalone/babel.min.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!-- Your custom script here --&gt;&#10;    &lt;script type=&quot;text/babel&quot;&gt;&#10;&#10;    // Arrow function from ES2015&#10;    const getMessage = () =&gt; &quot;Hello World&quot;;&#10;    document.getElementById(&apos;output&apos;).innerHTML = getMessage();&#10;&#10;    // .flat() from staged 3 proposal works because of polyfill&#10;    console.log([1, [2, 3], [4, 5]].flat());&#10;    &lt;/script&gt;&#10;&#10;&lt;/body&gt;&#10;&#10;&lt;/html&gt;
 
 </pre></code>
-               
+
 <p>Using Babel dynamically at runtime is generally not recommended for production but it does have a
                     few
                     use cases:
@@ -1078,12 +1088,12 @@ if (typeof Object.assign != 'function') {
         if (target == null) { // TypeError if undefined or null
             throw new TypeError('Cannot convert undefined or null to object');
         }
-    
+
         var to = Object(target);
-    
+
         for (var index = 1; index < arguments.length; index++) {
             var nextSource = arguments[index];
-    
+
             if (nextSource != null) { // Skip over if undefined or null
             for (var nextKey in nextSource) {
                 // Avoid bugs when hasOwnProperty is shadowed
@@ -1099,10 +1109,10 @@ if (typeof Object.assign != 'function') {
         configurable: true
     });
 }
-                        
-</code></pre>                  
-                    
-                    
+
+</code></pre>
+
+
                     <p>Basically, JavaScript polyfills fill in newer missing API features if they are missing from the runtime. The
                     <a href="https://babeljs.io/docs/en/babel-polyfill">babel-polyfill</a>
                     documentation offers the following explanation for polyfill'ing:</p>
@@ -1221,7 +1231,7 @@ console.log('He'.repeat(3)) // logs 'HeHeHe'
 
                 <pre class="line-numbers"><code class="language-js">
 // Pad the start of 'GO!' with spaces so the total length of the string is 10, including 'GO!'.
-console.log('GO!'.padStart(10)) // logs '       GO!' 
+console.log('GO!'.padStart(10)) // logs '       GO!'
 // note how the ' ' repeated until a length of 10 was reached
 
 // Pad the start of 'GO!' with '.' so the total length of the string is 10, including 'GO!'.
@@ -1304,7 +1314,7 @@ console.log(myArray4); // logs [1, 4, 9]
                     <code>Array(5)</code> will result in <code>[undefined, undefined, undefined, undefined, undefined]</code>.</p>
 
                 <pre class="line-numbers"><code class="language-js">
-// create an array containing 5 values                   
+// create an array containing 5 values
 console.log(Array.of(5,{},undefined,[],'string'));
 /* logs:
 
@@ -1401,7 +1411,7 @@ console.log(myArrayValues.next().value) // logs "item2 "
 let myArrayEntries = myArray.entries();
 console.log(myArrayEntries.next().value) // logs [0, "item0"]
 console.log(myArrayEntries.next().value) // logs [1, "item1"]
-console.log(myArrayEntries.next().value) // logs [2, "item2"] 
+console.log(myArrayEntries.next().value) // logs [2, "item2"]
                 </code></pre>
 
                 <div class="notes ">
@@ -1520,7 +1530,7 @@ const myObject = {};
 console.log(Object.is(myObject,myObject)); // logs true, same
 
 // compare different Object objects
-console.log(Object.is({},{})); // logs false, two different objects 
+console.log(Object.is({},{})); // logs false, two different objects
 
 // compare primitive values
 const myNumber = 5;
@@ -1531,7 +1541,7 @@ const myUndefined = undefined;
 console.log(Object.is(5,myNumber)); // logs true, same value
 console.log(Object.is(true,myBoolean)); // logs true, same value
 console.log(Object.is('',myString)); // logs true, same value
-console.log(Object.is(null,myNull)); // logs true, same value 
+console.log(Object.is(null,myNull)); // logs true, same value
 console.log(Object.is(undefined,myUndefined)); // logs true, same value
                 </code></pre>
 
@@ -1590,7 +1600,7 @@ console.log(Object.entries(myObject)); // logs [["0", "f"], ["1", "o"], ["2", "o
                 <pre class="line-numbers"><code class="language-js">
 // using assign() to clone an object
 const myObject = {'key1':'value1', 'key2':'value2'};
-console.log(Object.assign({}, myObject)); 
+console.log(Object.assign({}, myObject));
 /* logs new object, cloned from myObject
 
 [object Object] {
@@ -1604,8 +1614,8 @@ console.log(Object.assign({}, myObject));
 const myObject1 = {'key1':'value1', 'key2':'value2'};
 const myObject2 = {'key3':'value3', 'key4':'value4'};
 const myObject3 = {'key4':'4'};
-console.log(Object.assign(myObject1, myObject2, myObject3)); 
-/* logs a new object 
+console.log(Object.assign(myObject1, myObject2, myObject3));
+/* logs a new object
 
 [object Object] {
     key1: "value1",
@@ -1614,14 +1624,14 @@ console.log(Object.assign(myObject1, myObject2, myObject3));
     key4: "4"
 }
 
-Note: same properties are overwritten. Last in to the parameter list wins. 
+Note: same properties are overwritten. Last in to the parameter list wins.
 
 */
 
 // using assign to coerce a string to an object
 console.log(Object.assign({},'foo'));
 
-/* logs a new object 
+/* logs a new object
 
 [object Object] {
     0: "f",
@@ -1646,7 +1656,7 @@ console.log(Object.assign({},'foo'));
 
             </div>
 
-            
+
 
             <div id="chapter4" class="chapter">
 
@@ -1780,7 +1790,7 @@ try {
 
                 <h3>4.3 : Using Default Function Parameters (ES2015)</h3>
 
-                <p>In the past, if a default value was needed for an argument passed to a function, 
+                <p>In the past, if a default value was needed for an argument passed to a function,
                     boilerplate was needed: </p>
 
                 <pre class="line-numbers"><code class="language-js">
@@ -1914,7 +1924,7 @@ let { first:first, last:last } = { first: 'Bill', last: 'May' };
                 <pre class="line-numbers"><code class="language-js">
 // assign argument values to identifiers in the first parameter
 let func = function([one, two, three]) {
-    console.log(one, two, three); 
+    console.log(one, two, three);
 }
 func([1,2,3]);
 // Same concept as: let [one, two, three] = [1,2,3]; but using arguments & parameters instead
@@ -1925,7 +1935,7 @@ func([1,2,3]);
                 <pre class="line-numbers"><code class="language-js">
 // assign argument values to identifiers in the first parameter
 let func = function({ first: f, last: l }) {
-    console.log(f,l); 
+    console.log(f,l);
 }
 func({ first: 'Bill', last: 'May' });
 // Same concept as: let { first: f, last: l } = { first: 'Bill', last: 'May' };
@@ -1936,7 +1946,7 @@ func({ first: 'Bill', last: 'May' });
                 <pre class="line-numbers"><code class="language-js">
 // assign argument values to identifiers in the first parameter
 let func = function([a, b, c]) {
-    console.log(a,b,c); 
+    console.log(a,b,c);
 }
 func('foo');
 // Same concept as: let [a, b, c] = "foo";
@@ -1990,19 +2000,19 @@ console.log(l); // log Doe
 <pre class="line-numbers"><code class="language-js">
 // destructuring array argument, with default values
 const func1 = function([one=1, two=2, three=3]) {
-    console.log(one, two, three); 
+    console.log(one, two, three);
 }
 func1([]);
 
 // destructuring object argument, with default values
 const func2 = function({ first: f = 'John', last: l = 'Doe' }) {
-    console.log(f,l); 
+    console.log(f,l);
 }
 func2({});
 
 // destructuring string argument, with default values
 const func3 = function([a = 'f', b = 'o', c = 'o']) {
-    console.log(a,b,c); 
+    console.log(a,b,c);
 }
 func3('');
 </code></pre>
@@ -2019,7 +2029,7 @@ func3('');
 
                 <pre class="line-numbers"><code class="language-js">
 // spreading an Array into a function call
-console.log(...['f', 'o', 'o']); // logs f o o,  like calling console.log('f', 'o', 'o'); 
+console.log(...['f', 'o', 'o']); // logs f o o,  like calling console.log('f', 'o', 'o');
 
 
 // spreading Array(s) into an Array literal
@@ -2082,8 +2092,8 @@ console.log([...'bar']);
 
 // spreading a String into a function call
 console.log(...'foo');
-// i.e. console.log('f','o','o'); 
-// logs f o o 
+// i.e. console.log('f','o','o');
+// logs f o o
 
     </code></pre>
 
@@ -2101,13 +2111,13 @@ console.log(...'foo');
                     any unidentified arguments should be wrapped up into an array.</p>
 
                 <pre class="line-numbers"><code class="language-js">
-/* 
-By place the ... operator directly in front of the last function parameter the rest 
-of the arguments passed to a function besides the ones before the rest parameter 
+/*
+By place the ... operator directly in front of the last function parameter the rest
+of the arguments passed to a function besides the ones before the rest parameter
 are wrapped up into an array.
 */
-const func = function(param1, param2, ...restOfArguments) { 
-    console.log(param1, param2, restOfArguments); 
+const func = function(param1, param2, ...restOfArguments) {
+    console.log(param1, param2, restOfArguments);
 }
 // call func with 7 parameters, but only two are define, the rest are wrapped up into an array
 func(1,2,3,4,5,6,7); // logs 1 2 [3, 4, 5, 6, 7]
@@ -2131,7 +2141,7 @@ console.log(two); // 2
 console.log(three); // 3
 console.log(restOfNumbers); // [4, 5, 6]
 
-// // logs f o o  an Object properties in the variables f, l, and the rest in restOfProps Object 
+// // logs f o o  an Object properties in the variables f, l, and the rest in restOfProps Object
 const { first: f, last: l, ...restOfProps } = { first: 'Bill', last: 'May', age: 45, living: false };
 console.log(f); // Bill
 console.log(l); // May
@@ -2258,17 +2268,17 @@ const func = function (x) { return x * x; };
                 <p>with a new syntax that uses a fat arrow (i.e. <code>=&gt;</code>):</p>
 
                 <pre class="line-numbers"><code class="language-js">
-const func = x =&gt; x * x ; 
+const func = x =&gt; x * x ;
 // note: Omitted parenthesis around single parameter and use of implicit return.
-// This works fine when you have a single parameter and a single expression to return. 
+// This works fine when you have a single parameter and a single expression to return.
 
 // a less terse version of the above
 const func = (x) =&gt; { return x * x; };
 
 // parenthesis and blocks only required if you have more than one parameter or expression
-const func = (x, y) =&gt; { 
+const func = (x, y) =&gt; {
     const doubleY = y * 2;
-    return z * doubleY; 
+    return z * doubleY;
 };
         </code></pre>
 
@@ -2279,7 +2289,7 @@ const func = (x, y) =&gt; {
                     non-method functions, and they cannot be used as constructor functions (Arrow functions do not have prototypes). In most cases, fat arrow
                     function
                     expressions are used due to their terseness.</p>
-                    
+
                     <p>Fat arrow functions can also provide another
                     benefit
                     besides terseness. They will take on the value of <code>this</code> in the context they are used
@@ -2453,7 +2463,7 @@ for (const character of aString) {
                 <pre class="line-numbers"><code class="language-js">
 // create a new Map called myMap and preload it with key-value entries
 const myMap = new Map([
-    ['key1', 'value1'], 
+    ['key1', 'value1'],
     ['key2', 'value2']
 ]);
 
@@ -2471,13 +2481,13 @@ for (const entry of myMap){
         loop over Object literals.:</p>
 
 <pre class="line-numbers"><code class="language-js">
-const arr = ['zero', 'one']; 
+const arr = ['zero', 'one'];
 
-for (const [index, element] of arr.entries()) { 
-    console.log(index, element); 
+for (const [index, element] of arr.entries()) {
+    console.log(index, element);
 }
 
-// above logs 0 "zero" 
+// above logs 0 "zero"
 // above logs 1 "one"
 
 </code></pre>
@@ -2488,7 +2498,7 @@ for (const [index, element] of arr.entries()) {
                         <strong>Notes:</strong>
                     </p>
                     <ol>
-                        
+
                         <li>The for-of loop provides similar terseness found with Array looping methods but also
                             supports
                             <code>break</code> and
@@ -2536,7 +2546,7 @@ console.log(myObjectLiteral); // Logs Object {myNumber: 1}
 const myObjectLiteral = {
     myMethod: function(parameters){
         return;
-    }     
+    }
 };
     </code></pre>
 
@@ -2559,7 +2569,7 @@ const myObjectLiteralWithGetterAndSetter = {
     set myMethod(parameters){
       return;
     },
-  
+
     get myMethod(){
       return;
     },
@@ -2577,7 +2587,7 @@ const prop = 'prop';
 const myObject = {
     // note property keys/names are computed
     [prop + 1]: 1,
-    [prop + '2']: 2 
+    [prop + '2']: 2
 }
 
 console.log(myObject);
@@ -2617,7 +2627,7 @@ console.log(myObject);
 
 
                     <section class="sub">
-    
+
                             <p>This chapter will cover usages for the new <code>Map()</code> and <code>Set()</code> objects.</p>
                 </section>
 
@@ -2640,7 +2650,7 @@ console.log(myObject);
 // create a new Map called myMap
 // Preload myMap with key-value entries, as an Array, contained in an Array
 const myMap = new Map([
-    ['key1', 'value1'], 
+    ['key1', 'value1'],
     ['key2', 'value2']
 ]);
 
@@ -2699,7 +2709,7 @@ const myMap = new Map([
 ]);
 
 myMap.forEach( (value, key) => {
-    
+
     console.log(`${key} = ${value}`);
     // logs:
     //
@@ -2707,7 +2717,7 @@ myMap.forEach( (value, key) => {
     // "2=2"
     // "1=1,2,3"
     // "[object Object]=[ object Object]"
-    
+
 });
     </code></pre>
 
@@ -2857,7 +2867,7 @@ console.log(mySet.size) // logs 0, because you just cleared the Set of values
                         with object constructors and prototypal inheritance, to mimic class's from other OOP languages,</a>
                     was done in the following way:</p>
 
-                <pre class="line-numbers"><code class="language-js"> 
+                <pre class="line-numbers"><code class="language-js">
 // Create a Human class, i.e. an object factory for Human instances
 function Human(firstName, lastName) {
     this.firstName = firstName;
@@ -2901,14 +2911,14 @@ console.log(cody.fullNameAndLanguage()); // logs "Cody Lindley develops JavaScri
 console.log(cody.fullName()); // logs "Cody Lindley"
 
 // Call static type of Developer
-console.log(Developer.isJSdev(cody)); // logs true    
+console.log(Developer.isJSdev(cody)); // logs true
 </code></pre>
 
                 <p><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance#ECMAScript_2015_Classes">Using
                         ES2015
                         <code>class</code> syntax</a> the above can be re-written like so:</p>
 
-                <pre class="line-numbers"><code class="language-js"> 
+                <pre class="line-numbers"><code class="language-js">
 // Create a Human class, i.e. an object factory
 class Human {
     constructor (firstName, lastName) {
@@ -2978,7 +2988,7 @@ console.log(Developer.isJSdev(cody)); // logs true
 
                 <p>A class declaration:</p>
 
-                <pre class="line-numbers"><code class="language-js"> 
+                <pre class="line-numbers"><code class="language-js">
 class Human {
     constructor (firstName, lastName) {
         this.firstName = firstName;
@@ -2998,7 +3008,7 @@ jill.classMethod();
 
                 <p>A class expression:</p>
 
-                <pre class="line-numbers"><code class="language-js"> 
+                <pre class="line-numbers"><code class="language-js">
 const Human = class optionalClassNameForReferenceInClassMethods {
     constructor (firstName, lastName) {
         this.firstName = firstName;
@@ -3059,7 +3069,7 @@ class Human {
 
 const may = new Human('May','Jones'); // logs 'constructing'
 
-console.log(may); 
+console.log(may);
 /* logs:
 [object Object] {
     firstName: "May",
@@ -3209,7 +3219,7 @@ class Developer extends Human {
 let cody = new Developer('Cody', 'Lindley', 'JavaScript');
 
 // Call fullName() method, inherited from Human Class
-console.log(cody.fullName()); // logs "Cody Lindley"    
+console.log(cody.fullName()); // logs "Cody Lindley"
     </code></pre>
 
                 <div class="notes">
@@ -3272,19 +3282,19 @@ class Lawyer extends Human {
         // the above, using a parent constructor, does this:
         // this.firstName = firstName;
         // this.lastName = lastName;
-        
+
         this.type = type;
     }
 }
 
 // Create an instance of Developer, both the Developer and Human constructors are invoked.
 const cody = new Developer('Cody', 'Lindley', 'JavaScript');
-console.log(cody.fullName()) 
+console.log(cody.fullName())
 // works because Developer has a firstName and lastName setup by calling super()
 
 // Create an instance of Lawyer, both the Lawyer and Human constructors are invoked.
 const lisa = new Lawyer('Lisa', 'Lindley', 'Criminal');
-console.log(lisa.fullName()) 
+console.log(lisa.fullName())
 // works because Lawyer has a firstName and lastName setup by calling super()
 
     </code></pre>
@@ -3453,19 +3463,19 @@ console.log('I am not delayed by 10 seconds from running');
                     have to create an
                     error
                     handling situation. </p>
-                    
+
                     <p>I hope you can see that using callbacks alone, to complete the task just mentioned, using something like the <code>XMLHttpRequest</code>
                     web
                     API will either lead to a pyramid of callback functions:
-                    
+
 <pre class="line-numbers"><code class="language-js noRun">
-// A function within a function within a function within a function etc... 
+// A function within a function within a function within a function etc...
 
 getData1(function(x){
     ...
     getMoreData2(x, function(y){
         ...
-        getMoreData3(y, function(z){ 
+        getMoreData3(y, function(z){
             // on and on it could go
         });
 
@@ -3476,10 +3486,10 @@ getData1(function(x){
 // oh no the pyramid of doom!
 
 </code></pre>
-                    
+
                     <p>Or, a long
                     list of
-                    linked callback functions: 
+                    linked callback functions:
 
 <pre class="line-numbers"><code class="language-js noRun">
 // function 1 calls function 2, function 2 calls function 3 etc...
@@ -3499,7 +3509,7 @@ getData3(function(z){
 });
 
 </code></pre>
-                    
+
                     <p>Either way, many consider this situation, callback hell.</p>
 
                 <p>To combated the complexity of complicated asynchronous programming and avoid callback hell ES2015 provided the native
@@ -3540,7 +3550,7 @@ getData3(function(z){
 // Create a Promise called myPromise
 const myPromise = new Promise(
     (resolve, reject) => { // this is an executor function
-        try{ 
+        try{
             // do some async work, like an XHR request or a setTimeout()
             // ...
             // then call resolve() when done, pass it some data
@@ -3555,7 +3565,7 @@ const myPromise = new Promise(
 );
 
 // Consume myPromise
-myPromise.then( // takes two functions, 
+myPromise.then( // takes two functions,
     // if promise calls resolve() this first function is called
     (data) => { console.log(data); }, // logs 'foo'
     // if promise calls reject() this second function is called
@@ -3591,7 +3601,7 @@ const getGitHubData = (gitHubRESTPath) => {
         xhr.open('GET', 'https://api.github.com/' + gitHubRESTPath);
         xhr.send();
     });
-    
+
 };
 
 // Now call getGitHubData() and consumer the Promise wrapped around XMLHttpRequest
@@ -3625,7 +3635,7 @@ getGitHubData('repos/nothing/nothing').then( // use then() to consume the eventu
 </code></pre>
 
 <p>By wrapping the <code>Promise</code> itself with the <code>getGitHubData</code> function I can call the <code>getGitHubData</code> function like an API. The "mini api" provides a cleaner interface for working with asynchronous HTTP requests to the Github REST API because a Promise is used/returned.</p>
-                    
+
                     <p>To consume the returned promise the <code>then()</code> method is used to capture both the resolution of the asynchronous code and potentially any resulting errors (i.e. <code>then()</code> takes two arguments. First argument is resolution function, called when promise is resolved, second is a rejection function, called if the promise is rejected).</p>
 
 
@@ -3700,11 +3710,11 @@ new Promise(resolve => resolve('value2'))
 <pre class="line-numbers"><code class="language-js">
 Promise.reject('error1')
     .then(() => {}, error => console.log(error)); // logs "error1"
-  
-// The above is a shortcut for this: 
+
+// The above is a shortcut for this:
 new Promise((resolve, reject) => {reject('error2');})
     .then(() => {}, error => console.log(error)); //logs "error2"
-        
+
 </code></pre>
 
 <p>Don't over think these two static methods they simply side step the executor function and return a promise in a specific state.</p>
@@ -3735,7 +3745,7 @@ fetch('https://api.github.com/repos/facebook/react/commits')
     // fetch user from Github API
     .then((json) => {
         // use commit data to get user name of last person to commit
-        // use user name to get author data 
+        // use user name to get author data
         // pass response to next then()
         return fetch('https://api.github.com/users/'+json[0].author.login);
     }, error => console.log(error))
@@ -3749,7 +3759,7 @@ fetch('https://api.github.com/repos/facebook/react/commits')
 </code></pre>
 
 <p>It is important to remember, and you may have noticed in the previous code example, that the <code>then()</code> method can be used to chain any value not just promises. In the code example below I demonstrate using the promise API to simply transfer data through a promise chain.</p>
-    
+
 <pre class="line-numbers"><code class="language-js">
 // create a promise that is already resolved with a specific 'foo' value.
 var myPromise = Promise.resolve('foo');
@@ -3764,7 +3774,7 @@ myPromise.then((data)=>{
 });
 
 </code></pre>
-    
+
 <p>However, the <code>then()</code> method was specifically designed to chain promises that are doing asynchronous activities. In the following code example I use the promise chain to verify all the starwars API endpoints are functioning.</p>
 
 <pre class="line-numbers"><code class="language-js">
@@ -3799,9 +3809,9 @@ fetch('https://swapi.co/api/people')
 // To make all the calls run in parallel, Promise.all() could be used.
 
 </code></pre>
-    
-<p>One should note that any error returned within the first function passed to <code>then()</code> will result in the next <code>then()</code> running the rejection function (i.e. the second function padded to <code>then()</code>).</p>  
-    
+
+<p>One should note that any error returned within the first function passed to <code>then()</code> will result in the next <code>then()</code> running the rejection function (i.e. the second function padded to <code>then()</code>).</p>
+
 <pre class="line-numbers"><code class="language-js">
 // create a promise that is already resolved with a specific a 'foo' value.
 var myPromise = Promise.resolve('foo');
@@ -3820,7 +3830,7 @@ myPromise.then((data)=>{
 });
 
 </code></pre>
-    
+
     <p>Basically, using <code>then()</code> allows a developer to push data through a set of functions that can deal with both synchronous and asynchronous results interchangeable. When an error occurs, the chain does not stop, the next <code>then()</code> simply captures the error and runs the second function passed to it.</p>
 
 <div class="notes">
@@ -3858,7 +3868,7 @@ fetch('https://api.github.com/repos/fanebook/react/commits') // broken URL, face
     .then(() => {
         console.log('yup you can still chain after a catch()');
     });
-    
+
 </code></pre>
 
         <div class="notes">
@@ -3872,7 +3882,7 @@ fetch('https://api.github.com/repos/fanebook/react/commits') // broken URL, face
                 <li>The <code>catch()</code> method is simply a short-hand for, <code>.then(null, error => { // do something with error })</code>.</li>
             </ol>
         </div>
-        
+
 
 <h3>7.8 : Running a Final Function, Regardless of Promise Fulfillment State with <code>finally()</code></h3>
 
@@ -3901,7 +3911,7 @@ fetch('https://swapi.co/api/peoples/') // breaks because the URL is people not p
         stateOfLoading = 'Not Loading';
     })
     /* Basically a finally() eliminates redundant functions in a then()
-    
+
     The above finally is just shorthand for using a then() like so:
     .then(
         () => { // finally does not take in parameters
@@ -3946,7 +3956,7 @@ Promise.all([
 .then(([commits, stargazers]) => {
     console.log(commits.ok, stargazers.ok); // logs true, true
 });
-        
+
 </code></pre>
 
 <h3>7.10 : Waiting for the First, of a List, of Parallel Promises to Complete with <code>Promise.race()</code></h3>
@@ -3954,7 +3964,7 @@ Promise.all([
 <p>If you want to kick off several asynchronous activities simultaneously using promises and get notified when the first promise fulfills the Promise API offers <code>Promise.race()</code>. The <code>Promise.race()</code> static method takes an Array of promises and will return only the first promise that is fulfilled.</p>
 
 <pre class="line-numbers"><code class="language-js">
-    
+
 Promise.race([
     fetch('https://api.github.com/repos/facebook/react/commits'),
     fetch('https://api.github.com/repos/facebook/react/stargazers'),
@@ -3963,7 +3973,7 @@ Promise.race([
     console.log(response.url); // logs whichever one finishes first
 });
 
-</code></pre>     
+</code></pre>
 
 
             </div>
@@ -3979,12 +3989,12 @@ Promise.race([
 
                 <h3>8.1 : The <code>async</code>/<code>await</code> syntax is not a replacement for promises</h3>
 
-                <p>It would be a mistake thinking <code>async</code> functions and the <code>await</code> operator completely replaces the use of promises. Or, that one need not clearly understand promises before using <code>async</code> functions and the <code>await</code> operator. Thus, an in-depth reading of the previous chapter is necessary to comprehend this chapter.</p> 
-                    
+                <p>It would be a mistake thinking <code>async</code> functions and the <code>await</code> operator completely replaces the use of promises. Or, that one need not clearly understand promises before using <code>async</code> functions and the <code>await</code> operator. Thus, an in-depth reading of the previous chapter is necessary to comprehend this chapter.</p>
+
                     <p>An <code>async</code> function returns a promise that is typically resolved using the <code>await</code> operator. Think of an <code>async</code> function as a syntactical replacement for an executor function and the <code>await</code> operator as an inline syntactical replacement for <code>then()</code>.</p>
 
                     <p>Ultimately what you need to keep in mind is that the async/await syntax enhances promises, it does not replace promises!</p>
-    
+
                 <h3>8.2 : The benefits of using <code>async</code> functions and the <code>await</code> operator</h3>
 
                 <p>Using <code>async</code> functions and the <code>await</code> operator to handle asynchronous code is a stylistic choice with some subjective benefits over traditional promises.</p>
@@ -4036,7 +4046,7 @@ const getLastGitHubCommitAuthor = (owner, repo) => {
         .then(jsonAuthor => jsonAuthor.name )
         .catch((error) => {
             stateOfLoading = 'Error Loading';
-            throw new Error(error); 
+            throw new Error(error);
         })
         .finally(() => {
             stateOfLoading = 'Not Loading';
@@ -4090,7 +4100,7 @@ console.log(myAsyncFunction() instanceof Promise); // logs true
 // use then() to get value returned from myAsyncFunction
 myAsyncFunction().then((value) => { console.log(value) }); // logs 5
 
-</code></pre>             
+</code></pre>
 
                 <h3>8.4 : The <code>await</code> operator awaits a Promise or creates an implicit <code>Promise</code></h3>
 
@@ -4100,7 +4110,7 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs 5
 // an async function that returns the value 5
 var myAsyncFunction = async () => {
     const awaitedPromiseValue = await 5;
-    // The above is like explicitly writing: 
+    // The above is like explicitly writing:
     // const awaitedPromiseValue = await Promise.resolve(5);
 }
 
@@ -4490,7 +4500,7 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
                         and <code>default</code>:</li>
                     <br>
 
-                    <pre class="line-numbers"><code class="language-js noRun"> 
+                    <pre class="line-numbers"><code class="language-js noRun">
 // myModule.js
 
 const value1 = 'value1';
@@ -4523,7 +4533,7 @@ import nameGivenToDefaultValue, {value1, value2, value3} from './myModule.js';
 // Note export syntax, looks like destructuring syntax but is not destructuring
 
 // This module now has access to the imported values above
-console.log(nameGivenToDefaultValue, value1, value2, value3); 
+console.log(nameGivenToDefaultValue, value1, value2, value3);
 //logs value4, value1, value2, value3
     </code></pre>
                     <br>
@@ -4575,7 +4585,7 @@ console.log(nameGivenToDefaultValue, value1, value2, value3);
 
                 <pre class="line-numbers"><code class="language-js noRun">
 // module1.js
-                
+
 // exporting values inline, when defining
 export const simpleString = 'simpleString';
 export const simpleFunction = () => {};
@@ -4594,7 +4604,7 @@ export simpleString;
 
                 <pre class="line-numbers"><code class="language-js noRun">
 // module1.js
-                
+
 const simpleString = 'simpleString';
 const simpleFunction = () => {};
 const simpleNumber = 5;
@@ -4603,7 +4613,7 @@ function myFunction(){};
 
 // style for multiple references
 export {simpleString, simpleFunction, simpleNumber, myClass, myFunction};
-      
+
 </code></pre>
 
                 <p><strong>3. Exporting renamed referenced values:</strong></p>
@@ -4629,7 +4639,7 @@ export {sF as simpleFunction, sS as simpleString, sN as simpleNumber, mC as myCl
 
                 <pre class="line-numbers"><code class="language-js noRun">
 // This is module2.js, import a single value into this module from module1.js
-                
+
 import {simpleString} from './module1.js';
 
 console.log(simpleString);
@@ -4640,7 +4650,7 @@ console.log(simpleString);
 
                 <pre class="line-numbers"><code class="language-js noRun">
 // This is module2.js, import multiple values into this module from module1.js
-    
+
 import {simpleString, simpleFunction, simpleNumber, myFunction} from './module1.js';
 
 console.log(simpleString, simpleFunction, simpleNumber, myFunction);
@@ -4681,8 +4691,8 @@ console.log(sS, mF);
                 <p><strong>1. Inline default exporting:</strong></p>
 
                 <pre class="line-numbers"><code class="language-js noRun">
-// moduleA.js 
-// Of course only one default can be used per module. 
+// moduleA.js
+// Of course only one default can be used per module.
 // Each export below would not live in the same file, it would throw an error
 // Consider each line below to be in its own module
 
@@ -4692,7 +4702,7 @@ export default 5;
 export default true;
 export default {};
 export default [];
-   
+
 // expressions
 const simpleString = 'simpleString';
 const simpleNumber = 5;
@@ -4701,7 +4711,7 @@ export default simpleNumber;
 export default (() => {});
 
 // declarations
-export default class myClass {} // semicolon optional with this style 
+export default class myClass {} // semicolon optional with this style
 export default function myFunction(){} // semicolon optional with this style
 
 // unnamed declarations
@@ -4728,7 +4738,7 @@ export {simpleString as default}; // Exporting as default
 
                 <pre class="line-numbers"><code class="language-js noRun">
 // This is moduleB.js, import default from moduleA.js
-    
+
 // assumes you know that moduleA.js exports one default value
 // the default is imported and renamed where it is imported
 import nameGivenHereToDefault from './moduleA.js';
@@ -4753,7 +4763,7 @@ console.log(nameGivenHereToDefault);
 
                 <p>Modules can export both a single default value, along with other named values:</p>
 
-                <pre class="line-numbers"><code class="language-js noRun">              
+                <pre class="line-numbers"><code class="language-js noRun">
 // moduleA.js
 const myString = 'myString';
 export default myString;
@@ -4769,7 +4779,7 @@ export { myFunction };
 
                 <p><strong>By name:</strong></p>
 
-                <pre class="line-numbers"><code class="language-js noRun"> 
+                <pre class="line-numbers"><code class="language-js noRun">
 // moduleB.js
 
 import nameGivenHereToDefault, {myFunction, myNumber} from './moduleA.js';
@@ -4780,8 +4790,8 @@ console.log(nameGivenHereToDefault, myFunction, myNumber);
 
                 <p><strong>Using a single namespace:</strong></p>
 
-                <pre class="line-numbers"><code class="language-js noRun"> 
-// moduleB.js                    
+                <pre class="line-numbers"><code class="language-js noRun">
+// moduleB.js
 
 import * as namespace from './moduleA.js';
 
@@ -4805,7 +4815,7 @@ console.log(namepsace.default, namespace.myFunction, namespace.myNumber);
                         11.2+, Chrome Android 69+)</a></div>
 
                 <pre class="line-numbers"><code class="language-markup">
-<!DOCTYPE html>
+&lt;!DOCTYPE html&gt;
 &lt;html&gt;&#10;&lt;head&gt;&#10;    &lt;meta charset=&quot;utf-8&quot; /&gt;&#10;&lt;/head&gt;&#10;&#10;&lt;body&gt;&#10;&#10;    &lt;!--  Entry module is module1.js, dependency graph starts here --&gt;&#10;    &lt;script type=&quot;module&quot; src=&quot;./module1.js&quot;&gt;&lt;/script&gt;&#10;    &lt;!--  module1.js imports and uses module2.js --&gt;&#10;&#10;    &lt;!-- module1.js&#10;        import { counter, addToCounter } from &quot;./module2.js&quot;; &#10;        console.log(counter); // logs 0 &#10;        addToCounter(10); &#10;        console.log(counter); // logs 10&#10;&#10;&#10;        // Note, can&apos;t do this:&#10;        // counter = 10;&#10;    --&gt;&#10;&#10;    &lt;!-- module2.js&#10;        export let counter = 0; &#10;        &#10;        export const addToCounter = function(amountToAdd) { &#10;            counter = counter + amountToAdd; &#10;        };&#10;&#10;        export const foo = &quot;foo&quot;;    &#10;    --&gt;&#10;&#10;&lt;/body&gt;&#10;&lt;/html&gt;
     </pre></code>
 
@@ -4834,25 +4844,25 @@ console.log(namepsace.default, namespace.myFunction, namespace.myNumber);
 
                 <p><strong>Single namespace:</strong></p>
 
-                <pre class="line-numbers"><code class="language-js noRun"> 
-export * from 'myModule.js';         
+                <pre class="line-numbers"><code class="language-js noRun">
+export * from 'myModule.js';
     </code></pre>
 
                 <p><strong>Named values:</strong></p>
 
-                <pre class="line-numbers"><code class="language-js noRun"> 
-export {value1FromMyModule, value2FromMyModule} from 'myModule.js';           
+                <pre class="line-numbers"><code class="language-js noRun">
+export {value1FromMyModule, value2FromMyModule} from 'myModule.js';
     </code></pre>
 
                 <p><strong>Re-named values:</strong></p>
 
-                <pre class="line-numbers"><code class="language-js noRun"> 
-export {value1FromMyModule as renamed1, value2FromMyModule as renamed2} from 'myModule.js';                 
+                <pre class="line-numbers"><code class="language-js noRun">
+export {value1FromMyModule as renamed1, value2FromMyModule as renamed2} from 'myModule.js';
     </code></pre>
 
                 <p><strong>As a default value:</strong></p>
 
-                <pre class="line-numbers"><code class="language-js noRun"> 
+                <pre class="line-numbers"><code class="language-js noRun">
 export {default} from 'myModule.js';
 
 // or
@@ -4876,7 +4886,7 @@ export {value1FromMyModule as default} from 'myModule.js';
             'padding': 356,
             'tolerance': 70
         });
-        
+
         // Create TOC dynamically from content
         jQuery('.chapter').each(function (index) {
 
@@ -4891,16 +4901,16 @@ export {value1FromMyModule as default} from 'myModule.js';
             });
 
         });
-        
+
 
         jQuery('#panel').on('click', 'a:not(.codesandboxlink a, .toolbar a)', function () {
             window.open($(this).attr('href'));
             return false;
         });
-        
+
         // create link to codesandob
         jQuery('.line-numbers:has(.language-js)').not(':has(.noRun)').before('<div class="codesandboxlink"><a href="#">run/edit in codesandbox.io</a></div>');
-        
+
         // create event handler for codesandbox link
         jQuery('#panel').on('click', '.codesandboxlink a', function (e) {
             const code = $(this).parent().next('.code-toolbar:has(.language-js)').find('code').text();
@@ -4951,17 +4961,17 @@ export {value1FromMyModule as default} from 'myModule.js';
                 );
             e.preventDefault();
         });
-        
+
         // toggle TOC from hamburger icon
         document.querySelector('#menuButton').addEventListener('click', function () {
             slideout.toggle();
         });
-        
+
         // restore slideout state after clicking nav link
         jQuery("#menu").on("click", "a[href^='#']", function() {
           actualResizeHandler();
         })
-        
+
         // toggle TOC on window resize
         window.addEventListener("resize", resizeThrottler, false);
         var resizeTimeout;
@@ -4971,7 +4981,7 @@ export {value1FromMyModule as default} from 'myModule.js';
             resizeTimeout = setTimeout(function() {
             resizeTimeout = null;
             actualResizeHandler();
-        
+
             // The actualResizeHandler will execute at a rate of 15fps
             }, 66);
         }
@@ -4983,7 +4993,7 @@ export {value1FromMyModule as default} from 'myModule.js';
                 slideout.close();
             }
         }
-        
+
         // open TOC on load if window is wide enough
         window.addEventListener("load", function(event) {
             if (window.innerWidth > 1036){
@@ -4994,6 +5004,22 @@ export {value1FromMyModule as default} from 'myModule.js';
         });
 
     </script>
+
+    <script>
+        var $ctaCloseButton = document.querySelector("[data-cta-close]");
+        if ($ctaCloseButton) {
+            if (sessionStorage.fmCtaJsEnlightenmentClosed) {
+                $ctaCloseButton.parentElement.remove();
+            } else {
+                $ctaCloseButton.addEventListener("click", function() {
+                    sessionStorage.fmCtaJsEnlightenmentClosed = "yes";
+                    $ctaCloseButton.parentElement.remove();
+                })
+            }
+        }
+    </script>
+
+    <script src="assets/pathway.js"></script>
 </body>
 
 </html>
