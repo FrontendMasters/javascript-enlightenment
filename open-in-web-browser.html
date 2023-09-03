@@ -3432,7 +3432,7 @@ console.log('I am not delayed by 10 seconds from running');
                             <strong>Notes:</strong>
                         </p>
                         <ol>
-                            <li>An in-depth understanding of asynchronous programming in JavaScript requires an understanding of the call stack and the event-loop. Here is a simple and concise review of these parts, <a href="https://vimeo.com/96425312">"Help, I'm stuck in an event-loop."</a>. If you've struggled in the past with understanding promises it is likly because you lack the foundational information found in the aforementioned video.</li>
+                            <li>An in-depth understanding of asynchronous programming in JavaScript requires an understanding of the call stack and the event-loop. Here is a simple and concise review of these parts, <a href="https://vimeo.com/96425312">"Help, I'm stuck in an event-loop."</a>. If you've struggled in the past with understanding promises it is likely because you lack the foundational information found in the aforementioned video.</li>
                         </ol>
                     </div>
 
@@ -3785,22 +3785,22 @@ console.log('Wait for it...! Data from another Galaxy yo!');
 
 // chain a set of promise to occur one after the other
 // check the starwars api to see if all endpoints are working.
-fetch('https://swapi.co/api/people')
+fetch('https://swapi.dev/api/people/')
 .then((response)=>{
     starWarsAPICheck.push(response.ok);
-    return fetch('https://swapi.co/api/planets');
+    return fetch('https://swapi.dev/api/planets/');
 }).then((response)=>{
     starWarsAPICheck.push(response.ok);
-    return fetch('https://swapi.co/api/films');
+    return fetch('https://swapi.dev/api/films/');
 }).then((response)=>{
     starWarsAPICheck.push(response.ok);
-    return fetch('https://swapi.co/api/species');
+    return fetch('https://swapi.dev/api/species/');
 }).then((response)=>{
     starWarsAPICheck.push(response.ok);
-    return fetch('https://swapi.co/api/vehicles');
+    return fetch('https://swapi.dev/api/vehicles/');
 }).then((response)=>{
     starWarsAPICheck.push(response.ok);
-    return fetch('https://swapi.co/api/starships');
+    return fetch('https://swapi.dev/api/starships/');
 }).then(()=>{
     console.log(starWarsAPICheck); // logs [true, true, true, true, true, true]
 });
@@ -3893,7 +3893,7 @@ fetch('https://api.github.com/repos/fanebook/react/commits') // broken URL, face
 <pre class="line-numbers"><code class="language-js">
 let stateOfLoading = 'Not Loading'; // this is the default state
 
-fetch('https://swapi.co/api/peoples/') // breaks because the URL is people not peoples
+fetch('https://swapi.dev/api/peoples/') // breaks because the URL is people not peoples
     .then((response) => {
         if(!response.ok){ // run if fetch fails
             throw Error('api call broke'); // catch() is called
@@ -4139,25 +4139,25 @@ myAsyncFunction().then((value) => { console.log(value) }); // logs undefined
 (async () => { // create async function that is immediately invoked
 
     // sequential fetch's
-    const responsePlants = await fetch('https://swapi.co/api/planets');
+    const responsePlants = await fetch('https://swapi.dev/api/planets/');
     // API call above has to finish before the API below can start
-    const responseFilms = await fetch('https://swapi.co/api/films');
+    const responseFilms = await fetch('https://swapi.dev/api/films/');
 
     console.log(responsePlants.ok, responseFilms.ok) // logs true true
 
     // parallel fetch's, faster than sequential fetch's using Promise.all()
     const [parallelResponsePlanets, parallelResponseFilms] = await Promise.all([
-        fetch('https://swapi.co/api/planets'),
-        fetch('https://swapi.co/api/films')
+        fetch('https://swapi.dev/api/planets/'),
+        fetch('https://swapi.dev/api/films/')
     ]);
 
     console.log(parallelResponsePlanets.ok, parallelResponseFilms.ok) // logs true true
 
     // parallel fetch's, return first one to finish, using Promise.race()
     const fastestResponseFromStarWarsApi = await Promise.race([
-        fetch('https://swapi.co/api/species'),
-        fetch('https://swapi.co/api/vehicles'),
-        fetch('https://swapi.co/api/starships')
+        fetch('https://swapi.dev/api/species/'),
+        fetch('https://swapi.dev/api/vehicles/'),
+        fetch('https://swapi.dev/api/starships/')
     ]);
 
     console.log(fastestResponseFromStarWarsApi.ok); // logs true
