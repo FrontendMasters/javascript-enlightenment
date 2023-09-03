@@ -3839,7 +3839,7 @@ myPromise.then((data)=>{
         <strong>Notes:</strong>
     </p>
     <ol>
-        <li>If you don't provide <code>then()</code> a resolve function or provide a non-function, no error will occur. The next <code>then()</code> resolve function is passed an <code>undefined</code> value.</li>
+        <li>If you don't provide <code>then()</code> a resolve function or provide a non-function, no error will occur, and the next <code>then()</code> resolve function will passed the value the current resolve function passed.</li>
     </ol>
 </div>
 
